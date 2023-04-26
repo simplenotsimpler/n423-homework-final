@@ -3,6 +3,7 @@ import NavbarStyles from "../styles/Navbar.module.css";
 import { useRouter } from "next/router.js";
 import GoogleButton from "./GoogleBtn.jsx";
 import { useAuth } from "@/contexts/AuthContext.js";
+import { useNotification } from "@/contexts/NotificationContext.js";
 
 // TODO: check if user logged in
 
@@ -21,9 +22,11 @@ const Navbar = ({ logoText }) => {
   const router = useRouter();
 
   const { currentUser, login, logout } = useAuth();
+  const { addNotification } = useNotification();
 
   const handleLogout = async () => {
     await logout();
+    addNotification("Logout successful", "success");
   };
 
   const handleLogin = async () => {

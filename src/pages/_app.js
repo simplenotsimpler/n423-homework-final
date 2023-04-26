@@ -9,6 +9,7 @@ import Layout from "@/components/Layout.jsx";
 import "@/styles/globals.css";
 import { Roboto } from "next/font/google";
 import { AuthProvider } from "@/contexts/AuthContext.js";
+import { NotificationProvider } from "@/contexts/NotificationContext.js";
 
 //TODO: watch for loading issues, esp. when deployed, and fix
 const roboto = Roboto({
@@ -25,11 +26,13 @@ export default function App({ Component, pageProps }) {
           --roboto-font: ${roboto.style.fontFamily};
         }
       `}</style>
-      <AuthProvider>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </AuthProvider>
+      <NotificationProvider>
+        <AuthProvider>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </AuthProvider>
+      </NotificationProvider>
     </>
   );
 }
