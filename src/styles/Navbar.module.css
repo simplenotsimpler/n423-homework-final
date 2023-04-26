@@ -1,0 +1,43 @@
+.navbar {
+  height: 70px;
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 3rem;
+  font-size: 1.25rem;
+  text-transform: uppercase;
+}
+
+.navmenu {
+  list-style: none;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.navmenu a {
+  color: white;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.navmenu .activeLink {
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.5rem;
+  text-decoration-color: var(--theme-color-rgba);
+}
+
+.navmenu .btn {
+  border: none;
+  background-color: var(--theme-color-rgba);
+  color: white;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
