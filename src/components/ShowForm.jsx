@@ -120,7 +120,7 @@ const ShowForm = ({ showId }) => {
     */
 
   //TODO: when add edit function, check if characters length >0
-  //TODO: styling, css hide all but last button
+
   const characterInputs = show.characters.map((_character, index) => {
     return (
       <div className={ShowFormStyles.showInputCharacters} key={index}>
