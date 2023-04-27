@@ -81,6 +81,12 @@ const ShowForm = ({ showId }) => {
     setShow({ ...show, characters: [...show.characters, emptyCharacter] });
   };
 
+  const handleRemoveCharacter = (index) => {
+    const values = [...show.characters];
+    values.splice(index, 1);
+    setShow({ ...show, characters: [...values] });
+  };
+
   //NOTE: don't try to combine since the state change in characters affects renders
   const handleChange = (e) =>
     setShow({ ...show, [e.target.name]: e.target.value });
@@ -125,7 +131,12 @@ const ShowForm = ({ showId }) => {
           value={show.characters[index].name}
           onChange={(e) => handleInputChangeCharacters(e, index)}
         />
-        <button className={ShowFormStyles.btnRemove}>-</button>
+        <button
+          className={ShowFormStyles.btnRemove}
+          onClick={handleRemoveCharacter}
+        >
+          -
+        </button>
       </div>
     );
   });
