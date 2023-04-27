@@ -1,8 +1,10 @@
 /* 
   Resources: https://ultimatecourses.com/blog/using-async-await-inside-react-use-effect-hook
-*/
 
-//TODO: fix styling
+  https://stackoverflow.com/questions/34676752/can-i-use-an-html-input-type-date-to-collect-only-a-year
+  
+  1927 is when term TV as a medium came into use - https://en.wikipedia.org/wiki/Television
+*/
 
 import ShowFormStyles from "../styles/ShowForm.module.css";
 import { useState, useEffect } from "react";
@@ -19,6 +21,7 @@ const ShowForm = ({ showId }) => {
 
   const initialShowState = {
     title: "",
+    year: "",
   };
 
   const [show, setShow] = useState(initialShowState);
@@ -97,6 +100,22 @@ const ShowForm = ({ showId }) => {
             id="title"
             placeholder="Title..."
             value={show.title}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <div className={ShowFormStyles.showInputGroup}>
+          <label htmlFor="year">Year:</label>
+          <input
+            type="number"
+            name="year"
+            id="year"
+            placeholder="Year..."
+            min="1927"
+            max="2099"
+            step="1"
+            value={show.year}
             onChange={handleChange}
             required
           />
