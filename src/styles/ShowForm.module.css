@@ -1,0 +1,51 @@
+.showForm {
+  background-color: black;
+  color: white;
+
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-between; */
+  width: 600px;
+  padding: 1.25rem;
+  border-radius: 1.5rem;
+}
+
+.showForm h1 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.postInputGroup {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* margin-bottom: 1.5rem; */
+}
+
+.postInputGroup label {
+  margin-bottom: 0.5rem;
+  font-size: 1.15rem;
+  font-weight: 700;
+  padding: 0 0.5rem;
+}
+.postInputGroup input {
+  height: 3rem;
+  margin-bottom: 1.25rem;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
+
+.postInputGroup textarea {
+  height: 7rem;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
+
+.showForm input[type="submit"] {
+  height: 3rem;
+  margin-top: 1.25rem;
+  border-radius: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  cursor: pointer;
+}

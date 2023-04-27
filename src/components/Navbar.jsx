@@ -69,12 +69,12 @@ const Navbar = ({ logoText }) => {
             </li>
             <li>
               <Link
-                href="/profile"
+                href="/add"
                 className={
-                  router.pathname === "/profile" ? NavbarStyles.activeLink : ""
+                  router.pathname === "/add" ? NavbarStyles.activeLink : ""
                 }
               >
-                My Profile
+                Add Fave Show
               </Link>
             </li>
             <li>
