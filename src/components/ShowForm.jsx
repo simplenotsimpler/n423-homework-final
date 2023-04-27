@@ -49,9 +49,8 @@ const ShowForm = ({ showId }) => {
     setShow({ ...show, [e.target.name]: e.target.value });
 
   const createShow = async () => {
-    //TODO: add fan to show
-    // const newShow = { ...show, fan: currentUser };
-    const newShow = { ...show };
+    const newShow = { ...show, fan: currentUser.email };
+
     try {
       await addShow(newShow);
       addNotification(MESSAGES.SUCCESS_CREATE_SHOW, "success");

@@ -6,7 +6,7 @@ import { useAuth } from "@/contexts/AuthContext.js";
 import { useNotification } from "@/contexts/NotificationContext.js";
 import { MESSAGES } from "@/utils/messages.js";
 
-// currentUser.email
+//TODO: welcome by first name (split at space??)
 
 const Navbar = ({ logoText }) => {
   const router = useRouter();
