@@ -21,7 +21,8 @@ const ShowForm = ({ showId }) => {
 
   //characters - array of objects not array of strings. when just use strings the item is undefined when try to map it
 
-  const initialCharacters = [{ name: "" }, { name: "" }];
+  const emptyCharacter = { name: "" };
+  const initialCharacters = [emptyCharacter, emptyCharacter];
   const initialShowState = {
     title: "",
     year: "",
@@ -74,6 +75,12 @@ const ShowForm = ({ showId }) => {
     }
   };
 
+  const handleAddCharacter = (e) => {
+    e.preventDefault();
+    // const values = [...show.characters];
+    setShow({ ...show, characters: [...show.characters, emptyCharacter] });
+  };
+
   //NOTE: don't try to combine since the state change in characters affects renders
   const handleChange = (e) =>
     setShow({ ...show, [e.target.name]: e.target.value });
@@ -106,6 +113,8 @@ const ShowForm = ({ showId }) => {
     changed _character so don't get the warning per 1st answer in https://stackoverflow.com/questions/50011443/tslint-how-to-disable-error-somevariable-is-declared-but-its-value-is-never-rea
     */
 
+  //TODO: when add edit function, check if characters length >0
+  //TODO: styling, css hide all but last button
   const characterInputs = show.characters.map((_character, index) => {
     return (
       <div className={ShowFormStyles.showInputGroup} key={index}>
@@ -116,6 +125,7 @@ const ShowForm = ({ showId }) => {
           value={show.characters[index].name}
           onChange={(e) => handleInputChangeCharacters(e, index)}
         />
+        <button onClick={handleAddCharacter}>+</button>
       </div>
     );
   });
