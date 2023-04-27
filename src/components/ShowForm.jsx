@@ -117,7 +117,7 @@ const ShowForm = ({ showId }) => {
   //TODO: styling, css hide all but last button
   const characterInputs = show.characters.map((_character, index) => {
     return (
-      <div className={ShowFormStyles.showInputGroup} key={index}>
+      <div className={ShowFormStyles.showInputCharacters} key={index}>
         <input
           type="text"
           name="characters"
@@ -125,7 +125,7 @@ const ShowForm = ({ showId }) => {
           value={show.characters[index].name}
           onChange={(e) => handleInputChangeCharacters(e, index)}
         />
-        <button onClick={handleAddCharacter}>+</button>
+        <button className={ShowFormStyles.btnRemove}>-</button>
       </div>
     );
   });
@@ -162,7 +162,16 @@ const ShowForm = ({ showId }) => {
           />
         </div>
         <fieldset>
-          <h2>Fave Characters</h2>
+          <div className={ShowFormStyles.showCharactersHeader}>
+            <h2>Fave Characters</h2>
+            <button
+              className={ShowFormStyles.btnAdd}
+              onClick={handleAddCharacter}
+            >
+              +
+            </button>
+          </div>
+
           {characterInputs}
         </fieldset>
 

@@ -15,11 +15,6 @@
   margin-bottom: 1rem;
 }
 
-.showForm h2 {
-  font-size: 1rem;
-  margin-bottom: 1rem;
-}
-
 .showInputGroup {
   display: flex;
   flex-direction: column;
@@ -55,4 +50,66 @@
   cursor: pointer;
   background-color: var(--theme-color-rgba);
   color: white;
+}
+
+.showCharactersHeader {
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
+.showCharactersHeader h2 {
+  font-size: 1.15rem;
+  width: 85%;
+  margin-right: 2rem;
+}
+
+.showInputCharacters {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
+
+.showInputCharacters input {
+  height: 3rem;
+
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  width: 85%;
+
+  margin-right: 2rem;
+}
+
+.btnAdd {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  border-radius: 50%;
+  border: none;
+  background-color: var(--theme-color-rgba);
+  height: 3rem;
+  width: 30px;
+  height: 30px;
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: white;
+  /* margin: 0.5rem; */
+}
+
+.btnRemove {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  border-radius: 50%;
+  border: none;
+  background-color: white;
+  height: 3rem;
+  width: 30px;
+  height: 30px;
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--theme-color-rgba);
+  /* margin: 0.5rem; */
 }
