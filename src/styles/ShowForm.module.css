@@ -15,27 +15,27 @@
   margin-bottom: 1rem;
 }
 
-.postInputGroup {
+.showInputGroup {
   display: flex;
   flex-direction: column;
   justify-content: center;
   /* margin-bottom: 1.5rem; */
 }
 
-.postInputGroup label {
+.showInputGroup label {
   margin-bottom: 0.5rem;
   font-size: 1.15rem;
   font-weight: 700;
   padding: 0 0.5rem;
 }
-.postInputGroup input {
+.showInputGroup input {
   height: 3rem;
   margin-bottom: 1.25rem;
   border-radius: 0.5rem;
   padding: 0.5rem;
 }
 
-.postInputGroup textarea {
+.showInputGroup textarea {
   height: 7rem;
   border-radius: 0.5rem;
   padding: 0.5rem;
@@ -48,4 +48,6 @@
   font-size: 1.5rem;
   font-weight: 700;
   cursor: pointer;
+  background-color: var(--theme-color-rgba);
+  color: white;
 }
