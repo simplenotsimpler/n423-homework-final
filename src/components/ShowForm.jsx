@@ -19,12 +19,17 @@ const ShowForm = ({ showId }) => {
   const { getShowById, addShow, updateShow } = useFirebase();
   const { addNotification } = useNotification();
 
+  //characters - array of objects not array of strings. when just use strings the item is undefined when try to map it
+
+  const initialCharacters = [{ name: "" }, { name: "" }];
   const initialShowState = {
     title: "",
     year: "",
+    characters: initialCharacters,
   };
 
   const [show, setShow] = useState(initialShowState);
+
   const router = useRouter();
 
   const getShow = async () => {
@@ -48,9 +53,6 @@ const ShowForm = ({ showId }) => {
     }
   }, [showId]);
 
-  const handleChange = (e) =>
-    setShow({ ...show, [e.target.name]: e.target.value });
-
   const createShow = async () => {
     const newShow = { ...show, fan: currentUser.email };
 
@@ -72,6 +74,16 @@ const ShowForm = ({ showId }) => {
     }
   };
 
+  //NOTE: don't try to combine since the state change in characters affects renders
+  const handleChange = (e) =>
+    setShow({ ...show, [e.target.name]: e.target.value });
+
+  const handleInputChangeCharacters = (e, index) => {
+    const values = [...show.characters];
+    values[index] = { name: e.target.value };
+    setShow({ ...show, characters: [...values] });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -88,6 +100,25 @@ const ShowForm = ({ showId }) => {
       setShow(initialShowState);
     }
   };
+
+  /* 
+    NOTE: need character for the map even though value not read
+    changed _character so don't get the warning per 1st answer in https://stackoverflow.com/questions/50011443/tslint-how-to-disable-error-somevariable-is-declared-but-its-value-is-never-rea
+    */
+
+  const characterInputs = show.characters.map((_character, index) => {
+    return (
+      <div className={ShowFormStyles.showInputGroup} key={index}>
+        <input
+          type="text"
+          name="characters"
+          placeholder={`Character ${index + 1}`}
+          value={show.characters[index].name}
+          onChange={(e) => handleInputChangeCharacters(e, index)}
+        />
+      </div>
+    );
+  });
   return (
     <>
       <form className={ShowFormStyles.showForm} onSubmit={handleSubmit}>
@@ -120,6 +151,10 @@ const ShowForm = ({ showId }) => {
             required
           />
         </div>
+        <fieldset>
+          <h2>Fave Characters</h2>
+          {characterInputs}
+        </fieldset>
 
         <input
           type="submit"
