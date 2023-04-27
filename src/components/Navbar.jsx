@@ -9,15 +9,6 @@ import { useNotification } from "@/contexts/NotificationContext.js";
 
 // currentUser.email
 
-// for testing
-// const currentUser = {
-//   email: "r@r.com",
-// };
-
-// const currentUser = {
-//   email: "",
-// };
-
 const Navbar = ({ logoText }) => {
   const router = useRouter();
 
@@ -26,7 +17,8 @@ const Navbar = ({ logoText }) => {
 
   const handleLogout = async () => {
     await logout();
-    addNotification("Logout successful", "success");
+
+    addNotification("Logout successful", "info");
   };
 
   const handleLogin = async () => {
