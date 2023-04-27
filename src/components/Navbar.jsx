@@ -4,8 +4,7 @@ import { useRouter } from "next/router.js";
 import GoogleButton from "./GoogleBtn.jsx";
 import { useAuth } from "@/contexts/AuthContext.js";
 import { useNotification } from "@/contexts/NotificationContext.js";
-
-// TODO: check if user logged in
+import { MESSAGES } from "@/utils/messages.js";
 
 // currentUser.email
 
@@ -18,11 +17,36 @@ const Navbar = ({ logoText }) => {
   const handleLogout = async () => {
     await logout();
 
-    addNotification("Logout successful", "info");
+    addNotification(MESSAGES.SUCCESS_LOGOUT, "success");
   };
 
   const handleLogin = async () => {
-    await login();
+    try {
+      await login();
+      addNotification(MESSAGES.SUCCESS_LOGIN, "success");
+    } catch (error) {
+      console.error(error);
+
+      const errorCode = error.code;
+
+      switch (errorCode) {
+        case "auth/operation-not-allowed":
+          addNotification(MESSAGES.GOOGLE_OP_NOT_ENABLED, "error");
+          break;
+        case "auth/operation-not-supported-in-this-environment":
+          addNotification(MESSAGES.GOOGLE_OP_NOT_SUPPORTED, "error");
+          break;
+        case "auth/popup-blocked":
+          addNotification(MESSAGES.GOOGLE_POPUP_BLOCKED, "error");
+          break;
+        case "auth/popup-closed-by-user":
+          addNotification(MESSAGES.GOOGLE_POPUP_CLOSED, "error");
+          break;
+        default:
+          addNotification(MESSAGES.GOOGLE_GENERIC_LOGIN, "error");
+          break;
+      }
+    }
   };
 
   return (
