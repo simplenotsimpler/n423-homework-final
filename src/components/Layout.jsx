@@ -3,8 +3,8 @@ import Navbar from "./Navbar.jsx";
 import Notification from "./Notification.jsx";
 
 const brandText = {
-  logoText: "TV Fans",
-  companyText: "TV Fans Limited",
+  logoText: "Fave TV Shows",
+  companyText: "Fave TV Shows Limited",
 };
 const Layout = ({ children }) => {
   return (

@@ -143,7 +143,7 @@ const ShowForm = ({ showId }) => {
   return (
     <>
       <form className={ShowFormStyles.showForm} onSubmit={handleSubmit}>
-        <h1>{showId ? "Edit" : "Create"} A Show</h1>
+        <h1>{showId ? "Edit" : "Add"} Fave Show</h1>
         <div className={ShowFormStyles.showInputGroup}>
           <label htmlFor="title">Title:</label>
           <input

@@ -6,8 +6,6 @@ import { useAuth } from "@/contexts/AuthContext.js";
 import { useNotification } from "@/contexts/NotificationContext.js";
 import { MESSAGES } from "@/utils/messages.js";
 
-//TODO: welcome by first name (split at space??)
-
 const Navbar = ({ logoText }) => {
   const router = useRouter();
 
@@ -51,7 +49,11 @@ const Navbar = ({ logoText }) => {
 
   return (
     <nav className={NavbarStyles.navbar}>
-      <h1>{logoText}</h1>
+      <div className={NavbarStyles.logo}>
+        <img src="/images/tv-32.png" alt="" />
+        <h1>{logoText}</h1>
+      </div>
+
       <ul className={NavbarStyles.navmenu}>
         <li>
           <Link
@@ -64,9 +66,6 @@ const Navbar = ({ logoText }) => {
 
         {currentUser ? (
           <>
-            <li>
-              <p>{`Welcome, ${currentUser.displayName}`}</p>
-            </li>
             <li>
               <Link
                 href="/add"

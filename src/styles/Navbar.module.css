@@ -10,6 +10,19 @@
   text-transform: uppercase;
 }
 
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  margin-bottom: 0.5rem;
+  margin-right: 0.5rem;
+}
+.logo h1 {
+  font-size: 1.75rem;
+}
+
 .navmenu {
   list-style: none;
   color: white;
