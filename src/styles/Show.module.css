@@ -1,0 +1,31 @@
+.card {
+  background-color: var(--theme-color-rgba);
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.card img {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.content {
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 1.15rem;
+  font-weight: 500;
+}
+
+.year {
+  align-self: flex-end;
+  font-style: italic;
+}
+
+.more {
+  font-size: 0.8rem;
+  margin-left: 0.5rem;
+}

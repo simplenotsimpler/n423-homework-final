@@ -1,7 +1,13 @@
 :root {
+  /* classy palette from https://mycolor.space/?hex=%23FF5733&sub=1 */
+  /* hex color: #FF5733 */
   --theme-color: 255, 87, 51;
   --theme-color-rgba: rgba(var(--theme-color));
   --theme-color-muted: rgba(var(--theme-color), 0.2);
+
+  /* #bea69f */
+  --theme-color-secondary: 190, 166, 159;
+  --theme-color-secondary-rgba: rgba(var(--theme-color-secondary));
 }
 
 /* reset */
