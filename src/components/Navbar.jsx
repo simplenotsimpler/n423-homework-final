@@ -5,12 +5,20 @@ import GoogleButton from "./GoogleBtn.jsx";
 import { useAuth } from "@/contexts/AuthContext.js";
 import { useNotification } from "@/contexts/NotificationContext.js";
 import { MESSAGES } from "@/utils/messages.js";
+import { useState } from "react";
 
 const Navbar = ({ logoText }) => {
   const router = useRouter();
 
   const { currentUser, login, logout } = useAuth();
   const { addNotification } = useNotification();
+
+  const [isNavExpanded, setIsNavExpanded] = useState(false);
+
+  const handleNavToggle = (e) => {
+    // console.log(e.target);
+    setIsNavExpanded(!isNavExpanded);
+  };
 
   const handleLogout = async () => {
     await logout();
@@ -54,7 +62,11 @@ const Navbar = ({ logoText }) => {
         <h1>{logoText}</h1>
       </div>
 
-      <ul className={NavbarStyles.navmenu}>
+      <ul
+        className={`${NavbarStyles.navmenu} ${
+          isNavExpanded ? NavbarStyles.expanded : ""
+        }`}
+      >
         <li>
           <Link
             href="/"
@@ -88,6 +100,16 @@ const Navbar = ({ logoText }) => {
           </li>
         )}
       </ul>
+      <div
+        className={`${NavbarStyles.hamburger} ${
+          isNavExpanded ? NavbarStyles.expanded : ""
+        }`}
+        onClick={handleNavToggle}
+      >
+        <span className={NavbarStyles.bar}></span>
+        <span className={NavbarStyles.bar}></span>
+        <span className={NavbarStyles.bar}></span>
+      </div>
     </nav>
   );
 };
