@@ -25,7 +25,16 @@
   font-style: italic;
 }
 
-.more {
-  font-size: 0.8rem;
-  margin-left: 0.5rem;
+.btnLink {
+  text-decoration: none;
+  color: white;
+  background-color: var(--theme-color-tertiary-rgba);
+  margin: 1rem;
+  padding: 0.5rem;
+  border-radius: 10px;
+  font-size: 1.15rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
 }

@@ -1,5 +1,7 @@
 :root {
   /* classy palette from https://mycolor.space/?hex=%23FF5733&sub=1 */
+  /* converted to raw rgb numbers so can use with rgba */
+
   /* hex color: #FF5733 */
   --theme-color: 255, 87, 51;
   --theme-color-rgba: rgba(var(--theme-color));
@@ -8,6 +10,10 @@
   /* #bea69f */
   --theme-color-secondary: 190, 166, 159;
   --theme-color-secondary-rgba: rgba(var(--theme-color-secondary));
+
+  /* #3fa600 */
+  --theme-color-tertiary: 63, 166, 0;
+  --theme-color-tertiary-rgba: rgba(var(--theme-color-tertiary));
 }
 
 /* reset */

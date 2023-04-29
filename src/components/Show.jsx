@@ -1,5 +1,6 @@
 import ShowStyles from "../styles/Show.module.css";
 import { dummyImgUrl } from "@/utils/helpers.js";
+import Link from "next/link.js";
 //TODO: link - routes to detail page
 
 const Show = ({ show }) => {
@@ -9,7 +10,9 @@ const Show = ({ show }) => {
       <div className={ShowStyles.content}>
         <p className={ShowStyles.title}>{show.title}</p>
         <p className={ShowStyles.year}>{show.year}</p>
-        <p className={ShowStyles.more}>More...</p>
+        <Link href={`/shows/${show.id}`} className={ShowStyles.btnLink}>
+          More...
+        </Link>
       </div>
     </div>
   );
