@@ -10,6 +10,7 @@ import "@/styles/globals.css";
 import { Roboto } from "next/font/google";
 import { AuthProvider } from "@/contexts/AuthContext.js";
 import { NotificationProvider } from "@/contexts/NotificationContext.js";
+import { ShowsProvider } from "@/contexts/ShowsContext.js";
 
 //TODO: watch for loading issues, esp. when deployed, and fix
 const roboto = Roboto({
@@ -28,9 +29,11 @@ export default function App({ Component, pageProps }) {
       `}</style>
       <NotificationProvider>
         <AuthProvider>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
+          <ShowsProvider>
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+          </ShowsProvider>
         </AuthProvider>
       </NotificationProvider>
     </>
