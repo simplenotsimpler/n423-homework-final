@@ -11,7 +11,7 @@ const Show = ({ show }) => {
         <p className={ShowStyles.title}>{show.title}</p>
         <p className={ShowStyles.year}>{show.year}</p>
         <Link href={`/shows/${show.id}`} className={ShowStyles.btnLink}>
-          More...
+          Read More
         </Link>
       </div>
     </div>

@@ -1,6 +1,7 @@
 .card {
-  background-color: var(--theme-color-rgba);
-  color: white;
+  background-color: white;
+
+  color: black;
   border-radius: 10px;
   cursor: pointer;
 }
@@ -25,10 +26,11 @@
   font-style: italic;
 }
 
+/* TODO: box shadow */
 .btnLink {
   text-decoration: none;
   color: white;
-  background-color: var(--theme-color-tertiary-rgba);
+  background-color: var(--theme-color-rgba);
   margin: 1rem;
   padding: 0.5rem;
   border-radius: 10px;
