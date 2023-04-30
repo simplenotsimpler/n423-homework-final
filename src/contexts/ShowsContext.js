@@ -3,11 +3,6 @@ import { db } from "@/utils/firebaseInit.js";
 
 export const ShowsContext = createContext();
 
-export function useShows() {
-  const { shows, getShowsFromDb } = useContext(ShowsContext);
-  return { shows, getShowsFromDb };
-}
-
 export const ShowsProvider = ({ children }) => {
   const [shows, setShows] = useState([]);
 
@@ -39,3 +34,8 @@ export const ShowsProvider = ({ children }) => {
     <ShowsContext.Provider value={value}>{children}</ShowsContext.Provider>
   );
 };
+
+export function useShows() {
+  const { shows, getShowsFromDb } = useContext(ShowsContext);
+  return { shows, getShowsFromDb };
+}
