@@ -20,7 +20,6 @@ export default function useFirebaseDb() {
   };
 
   return {
-    getShowsFromDb,
     getShowById,
     addShow,
     updateShow,
