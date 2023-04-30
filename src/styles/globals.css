@@ -14,6 +14,7 @@
   /* #3fa600 */
   --theme-color-tertiary: 63, 166, 0;
   --theme-color-tertiary-rgba: rgba(var(--theme-color-tertiary));
+  --theme-color-tertiary-muted: rgba(var(--theme-color-tertiary), 0.2);
 }
 
 /* reset */
