@@ -4,7 +4,7 @@ import { useRouter } from "next/router.js";
 import ShowDetail from "@/components/ShowDetail.jsx";
 
 const ShowDetailPage = () => {
-  const { shows } = useShows();
+  const { shows, getShowById } = useShows();
   const [currentShow, setCurrentShow] = useState();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -17,7 +17,7 @@ const ShowDetailPage = () => {
     setIsLoading(true);
     if (!router.isReady || !showId) return;
     try {
-      setCurrentShow(shows.find((show) => show.id === showId));
+      setCurrentShow(getShowById(showId));
     } catch (error) {
       console.log(error);
     } finally {

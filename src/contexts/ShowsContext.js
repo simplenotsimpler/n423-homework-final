@@ -19,6 +19,11 @@ export const ShowsProvider = ({ children }) => {
     setShows(newShows);
   };
 
+  const getShowById = (showId) => {
+    const show = shows.find((show) => show.id === showId);
+    return show;
+  };
+
   //TODO: may need to export so can call in useEffect for periodic refresh; if use setInterval here could cause whole app to re-render
   useEffect(() => {
     getShowsFromDb();
@@ -27,7 +32,8 @@ export const ShowsProvider = ({ children }) => {
 
   const value = {
     shows,
-    getShowsFromDb
+    getShowsFromDb,
+    getShowById,
   };
 
   return (
@@ -36,6 +42,6 @@ export const ShowsProvider = ({ children }) => {
 };
 
 export function useShows() {
-  const { shows, getShowsFromDb } = useContext(ShowsContext);
-  return { shows, getShowsFromDb };
+  const { shows, getShowsFromDb, getShowById } = useContext(ShowsContext);
+  return { shows, getShowsFromDb, getShowById };
 }
