@@ -17,9 +17,11 @@ const ShowDetail = ({ show }) => {
         <p className={ShowDetailStyles.charactersTitle}>Favorite Characters</p>
         <ul className={ShowDetailStyles.characters}>
           {show.characters.length > 0 &&
-            show.characters.map((character) => {
+            show.characters.map((character, idx) => {
               return (
-                <li className={ShowDetailStyles.character}>{character.name}</li>
+                <li key={idx} className={ShowDetailStyles.character}>
+                  {character.name}
+                </li>
               );
             })}
         </ul>

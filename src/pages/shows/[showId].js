@@ -6,6 +6,7 @@ import ShowDetail from "@/components/ShowDetail.jsx";
 const ShowDetailPage = () => {
   const { shows } = useShows();
   const [currentShow, setCurrentShow] = useState();
+  const [isLoading, setIsLoading] = useState(false);
 
   const router = useRouter();
   const { showId } = router.query;
@@ -13,11 +14,32 @@ const ShowDetailPage = () => {
   //check that router read
   //https://stackoverflow.com/questions/61040790/userouter-withrouter-receive-undefined-on-query-in-first-render
   useEffect(() => {
-    if (!router.isReady) return;
-    setCurrentShow(shows.find((show) => show.id === showId));
-  }, [router.isReady]);
+    setIsLoading(true);
+    if (!router.isReady || !showId) return;
+    try {
+      setCurrentShow(shows.find((show) => show.id === showId));
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsLoading(false);
+    }
 
-  return <>{currentShow && <ShowDetail show={currentShow} />}</>;
+    //clean up
+    return () => {
+      setCurrentShow(null);
+      setIsLoading(false);
+    };
+  }, [router.isReady, showId, shows]);
+
+  return (
+    <>
+      {isLoading || !currentShow ? (
+        <p>Loading...</p>
+      ) : (
+        <ShowDetail show={currentShow} />
+      )}
+    </>
+  );
 };
 
 export default ShowDetailPage;
