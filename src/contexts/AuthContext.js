@@ -14,9 +14,6 @@ export function useAuth() {
 export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState();
 
-  //TODO: implement loading. see next js documentation for their specifics
-  // const [loading, setLoading] = useState(true);
-
   function login() {
     return auth.signInWithPopup(googleProvider);
   }

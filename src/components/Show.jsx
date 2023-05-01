@@ -1,7 +1,6 @@
 import ShowStyles from "../styles/Show.module.css";
 import { dummyImgUrl } from "@/utils/helpers.js";
 import Link from "next/link.js";
-//TODO: link - routes to detail page
 
 const Show = ({ show }) => {
   return (

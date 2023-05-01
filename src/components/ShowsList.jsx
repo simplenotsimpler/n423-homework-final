@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-import useFirebaseDb from "@/hooks/useFirebaseDb.js";
 import Show from "./Show.jsx";
 import ShowsListStyles from "../styles/ShowsList.module.css";
 import { useShows } from "@/contexts/ShowsContext.js";

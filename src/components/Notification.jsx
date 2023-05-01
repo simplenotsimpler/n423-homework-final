@@ -4,6 +4,7 @@ import NotificationStyles from "../styles/Notification.module.css";
 //TODO: proptypes to restrict status? https://jaketrent.com/post/react-oneof-vs-oneoftype/
 
 //TODO: if time, add a time out
+//TODO: move user to top of page
 
 const NOTIFICATION_ICONS = {
   success: "\u2713",
