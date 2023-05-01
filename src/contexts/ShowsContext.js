@@ -24,10 +24,13 @@ export const ShowsProvider = ({ children }) => {
     return show;
   };
 
-  //TODO: may need to export so can call in useEffect for periodic refresh; if use setInterval here could cause whole app to re-render
   useEffect(() => {
+    const intervalId = setInterval(() => {
+      getShowsFromDb();
+    }, 5000);
+
     getShowsFromDb();
-    return () => {};
+    return () => clearInterval(intervalId);
   }, []);
 
   const value = {

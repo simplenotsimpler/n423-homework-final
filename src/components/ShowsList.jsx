@@ -4,7 +4,6 @@ import Show from "./Show.jsx";
 import ShowsListStyles from "../styles/ShowsList.module.css";
 import { useShows } from "@/contexts/ShowsContext.js";
 
-//TODO: periodic refresh
 const ShowsList = () => {
   const { shows } = useShows();
 
