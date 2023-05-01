@@ -32,6 +32,11 @@ body {
   width: 100%;
 }
 
+/* body {
+  min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+} */
 /* reset for forms */
 /* https://developer.mozilla.org/en-US/docs/Learn/Forms/Styling_web_forms */
 button,
@@ -61,12 +66,15 @@ body {
 .content {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
 
   padding: 2.5rem 3.125rem;
   /* height less the navbar height. ideally should be a variable */
   height: calc(100vh-70px);
+
+  /* set min-height & margin-auto on footer to make sure sticks at bottom when no content */
+  /* https://dev.to/nehalahmadkhan/how-to-make-footer-stick-to-bottom-of-web-page-3i14 */
+  min-height: 100vh;
 }
 
 /* 
