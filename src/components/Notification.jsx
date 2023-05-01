@@ -1,11 +1,8 @@
 import { useNotification } from "@/contexts/NotificationContext.js";
 import NotificationStyles from "../styles/Notification.module.css";
 
-//TODO: proptypes to restrict status? https://jaketrent.com/post/react-oneof-vs-oneoftype/
-
-//TODO: if time, add a time out
-//TODO: move user to top of page
-
+//NOTE: these are only dismissible, no timeout
+//third-party libraries implement this better
 const NOTIFICATION_ICONS = {
   success: "\u2713",
   error: "\u2BBE",
@@ -24,15 +21,15 @@ const Notification = () => {
       {notification && notification.message && (
         <div
           className={`${NotificationStyles.notificationContainer} ${
-            NotificationStyles[notification.status]
+            NotificationStyles[notification.type]
           }`}
           onClick={handleSubmit}
         >
           <div className={NotificationStyles.icon}>
-            {notification.status === "success" && NOTIFICATION_ICONS.success}
-            {notification.status === "error" && NOTIFICATION_ICONS.error}
-            {notification.status === "warning" && NOTIFICATION_ICONS.warning}
-            {notification.status === "info" && NOTIFICATION_ICONS.info}
+            {notification.type === "success" && NOTIFICATION_ICONS.success}
+            {notification.type === "error" && NOTIFICATION_ICONS.error}
+            {notification.type === "warning" && NOTIFICATION_ICONS.warning}
+            {notification.type === "info" && NOTIFICATION_ICONS.info}
           </div>
           <p className={NotificationStyles.text}>{notification.message}</p>
           <button className={NotificationStyles.btnClose}>X</button>

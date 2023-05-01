@@ -112,6 +112,8 @@ const ShowForm = ({ showId }) => {
       //https://stackoverflow.com/questions/63475521/how-to-clear-input-field-after-a-successful-submittion-in-react-using-useeffect
       setShow(initialShowState);
     }
+
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   };
 
   /* 

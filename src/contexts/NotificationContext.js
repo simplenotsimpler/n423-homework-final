@@ -14,9 +14,7 @@ export const NotificationProvider = ({ children }) => {
 
   const removeNotification = () => setNotification(null);
 
-  //TODO: JSDoc to advise of status values: success, error, warning, info
-  const addNotification = (message, status) =>
-    setNotification({ message, status });
+  const addNotification = (message, type) => setNotification({ message, type });
 
   const value = {
     notification,
