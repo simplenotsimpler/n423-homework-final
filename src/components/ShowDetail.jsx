@@ -3,28 +3,45 @@ import { dummyImgUrlLg } from "@/utils/helpers.js";
 import { useAuth } from "@/contexts/AuthContext.js";
 import Link from "next/link.js";
 import { getTextAfterCharacter } from "@/utils/helpers.js";
-
-//TODO: maybe modal for the edit form?? otherwise have to redo the shows folder
-const handleDeleteClick = async (e) => {
-  const showId = getTextAfterCharacter(e.target.id, "-");
-
-  //TODO: replace with pretty confirm w/ default on cancel
-  const confirmResult = confirm("Are you sure you want to delete this show?");
-
-  if (confirmResult) {
-    console.log("Yes, delete showId", showId);
-    // const result = await deleteShow(showId);
-    //TODO: pretty this up
-    // alert(result.message);
-
-    alert(`coming soon - delete show id: ${showId}`);
-  } else {
-    console.log("Delete cancelled");
-  }
-};
+import { useNotification } from "@/contexts/NotificationContext.js";
+import { MESSAGES } from "@/utils/messages.js";
+import useFirebaseDb from "@/hooks/useFirebaseDb.js";
+import { useRouter } from "next/router.js";
 
 const ShowDetail = ({ show }) => {
   const { currentUser } = useAuth();
+  const { addNotification } = useNotification();
+  const { deleteShow } = useFirebaseDb();
+  const router = useRouter();
+  //TODO: maybe modal for the edit form?? otherwise have to redo the shows folder
+  const handleDeleteClick = async (e) => {
+    const showId = getTextAfterCharacter(e.target.id, "-");
+
+    //TODO: replace with pretty confirm w/ default on cancel
+    const confirmResult = confirm("Are you sure you want to delete this show?");
+
+    //TODO: try catch, check that owner as extra precaution
+    if (confirmResult) {
+      try {
+        // if(!currentUser || currentUser.email != show.fan){
+        //   throw
+        // }
+        console.log("Yes, delete showId", showId);
+        // const result = await deleteShow(showId);
+        await deleteShow(showId);
+        addNotification(`${MESSAGES.SUCCESS_DELETE_SHOW} ${showId}`, "success");
+        router.push("/");
+      } catch (error) {
+        console.error(error);
+        addNotification(MESSAGES.ERROR_DELETE_SHOW, "error");
+      }
+    } else {
+      console.log("Delete cancelled");
+      addNotification(MESSAGES.INFO_CANCEL_DELETE_SHOW, "info");
+    }
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  };
+
   return (
     <div className={ShowDetailStyles.showDetail}>
       <header className={ShowDetailStyles.showHeader}>

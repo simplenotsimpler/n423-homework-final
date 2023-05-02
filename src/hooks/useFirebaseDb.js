@@ -12,8 +12,13 @@ export default function useFirebaseDb() {
       .update({ ...show });
   };
 
+  const deleteShow = (showId)=> {
+    return db.collection("shows").doc(showId).delete();
+  }
+
   return {
     addShow,
     updateShow,
+    deleteShow
   };
 }

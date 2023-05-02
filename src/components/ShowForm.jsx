@@ -5,7 +5,7 @@
   
   1927 is when term TV as a medium came into use - https://en.wikipedia.org/wiki/Television
 */
-
+//TODO: fix input font colors
 import ShowFormStyles from "../styles/ShowForm.module.css";
 import { useState, useEffect } from "react";
 import useFirebase from "@/hooks/useFirebaseDb.js";
