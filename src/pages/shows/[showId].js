@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router.js";
 import ShowDetail from "@/components/ShowDetail.jsx";
 
+//TODO: move this to /shows/[showId]/index.js & update link to it
 const ShowDetailPage = () => {
   const { shows, getShowById } = useShows();
   const [currentShow, setCurrentShow] = useState();

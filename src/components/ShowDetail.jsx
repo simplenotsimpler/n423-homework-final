@@ -7,8 +7,7 @@ import { MESSAGES } from "@/utils/messages.js";
 import useFirebaseDb from "@/hooks/useFirebaseDb.js";
 import { useRouter } from "next/router.js";
 import { useState } from "react";
-import Modal from "./Modal.jsx";
-import ShowForm from "./ShowForm.jsx";
+import Link from "next/link.js";
 
 const ShowDetail = ({ show }) => {
   const { currentUser } = useAuth();
@@ -17,10 +16,6 @@ const ShowDetail = ({ show }) => {
   const router = useRouter();
   const [open, setOpen] = useState(false);
 
-  const handleEditClick = (e) => {
-    const showId = getTextAfterCharacter(e.target.id, "-");
-    //TODO: show modal from here
-  };
   const handleDeleteClick = async (e) => {
     const showId = getTextAfterCharacter(e.target.id, "-");
 
@@ -77,16 +72,9 @@ const ShowDetail = ({ show }) => {
         <p>Biggest fan: {show.fan}</p>
         {currentUser.email === show.fan ? (
           <div className={ShowDetailStyles.showActions}>
-            <button
-              className={ShowDetailStyles.btnAction}
-              id={`edit-${show.id}`}
-              onClick={() => setOpen(true)}
-            >
+            <Link href={`/shows/${show.id}/edit/`}>
               <span className="visually-hidden">Edit</span> &#128393;
-            </button>
-            <Modal isOpen={open} onClose={() => setOpen(false)}>
-              <ShowForm />
-            </Modal>
+            </Link>
             <button
               className={ShowDetailStyles.btnAction}
               id={`delete-${show.id}`}

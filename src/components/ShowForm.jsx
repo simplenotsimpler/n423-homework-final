@@ -47,7 +47,8 @@ const ShowForm = ({ showId }) => {
 
   useEffect(() => {
     if (showId) {
-      getShow();
+      // getShow();
+      console.log("showForm > useEffect > showId", showId);
 
       //clean up
       return () => {};
