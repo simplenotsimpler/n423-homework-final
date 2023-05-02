@@ -64,8 +64,36 @@
 
 .showDetail footer {
   height: 50px;
-  padding: 0.5rem;
+  padding: 1rem;
   border-top: solid 0.2rem;
   text-align: center;
   color: var(--theme-accent);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.showActions {
+  margin-left: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: inherit;
+  gap: 2rem;
+  font-size: 1.75rem;
+}
+
+.showActions button {
+  margin: 0.5rem;
+  padding: 0.5rem;
+  border: none;
+  color: var(--theme-accent);
+  background-color: transparent;
+  font-size: inherit;
+  font-weight: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
