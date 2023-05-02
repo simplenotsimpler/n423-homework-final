@@ -5,8 +5,7 @@ import ShowDetail from "@/components/ShowDetail.jsx";
 
 //TODO: move this to /shows/[showId]/index.js & update link to it
 const ShowDetailPage = () => {
-  const { shows, getShowById } = useShows();
-  const [currentShow, setCurrentShow] = useState();
+  const { getShowById, currentShow } = useShows();
   const [isLoading, setIsLoading] = useState(false);
 
   const router = useRouter();
@@ -18,7 +17,7 @@ const ShowDetailPage = () => {
     setIsLoading(true);
     if (!router.isReady || !showId) return;
     try {
-      setCurrentShow(getShowById(showId));
+      getShowById(showId);
     } catch (error) {
       console.log(error);
     } finally {
@@ -27,10 +26,10 @@ const ShowDetailPage = () => {
 
     //clean up
     return () => {
-      setCurrentShow(null);
+      // setCurrentShow(null);
       setIsLoading(false);
     };
-  }, [router.isReady, showId, shows]);
+  }, [router.isReady, showId, currentShow]);
 
   return (
     <>

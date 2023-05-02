@@ -5,6 +5,7 @@ export const ShowsContext = createContext();
 
 export const ShowsProvider = ({ children }) => {
   const [shows, setShows] = useState([]);
+  const [currentShow, setCurrentShow] = useState();
 
   const getShowsFromDb = async () => {
     const showsSnapshot = await db.collection("shows").get();
@@ -21,7 +22,8 @@ export const ShowsProvider = ({ children }) => {
 
   const getShowById = (showId) => {
     const show = shows.find((show) => show.id === showId);
-    return show;
+    setCurrentShow(show);
+    // return show;
   };
 
   useEffect(() => {
@@ -37,6 +39,7 @@ export const ShowsProvider = ({ children }) => {
     shows,
     getShowsFromDb,
     getShowById,
+    currentShow,
   };
 
   return (
@@ -45,6 +48,7 @@ export const ShowsProvider = ({ children }) => {
 };
 
 export function useShows() {
-  const { shows, getShowsFromDb, getShowById } = useContext(ShowsContext);
-  return { shows, getShowsFromDb, getShowById };
+  const { shows, getShowsFromDb, getShowById, currentShow } =
+    useContext(ShowsContext);
+  return { shows, getShowsFromDb, getShowById, currentShow };
 }
