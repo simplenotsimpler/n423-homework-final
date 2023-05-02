@@ -1,7 +1,6 @@
 import ShowDetailStyles from "../styles/ShowDetail.module.css";
 import { dummyImgUrlLg } from "@/utils/helpers.js";
 import { useAuth } from "@/contexts/AuthContext.js";
-import Link from "next/link.js";
 import { getTextAfterCharacter } from "@/utils/helpers.js";
 import { useNotification } from "@/contexts/NotificationContext.js";
 import { MESSAGES } from "@/utils/messages.js";
@@ -13,7 +12,11 @@ const ShowDetail = ({ show }) => {
   const { addNotification } = useNotification();
   const { deleteShow } = useFirebaseDb();
   const router = useRouter();
-  //TODO: maybe modal for the edit form?? otherwise have to redo the shows folder
+
+  const handleEditClick = (e) => {
+    const showId = getTextAfterCharacter(e.target.id, "-");
+    //TODO: show modal from here
+  };
   const handleDeleteClick = async (e) => {
     const showId = getTextAfterCharacter(e.target.id, "-");
 
@@ -70,9 +73,9 @@ const ShowDetail = ({ show }) => {
         <p>Biggest fan: {show.fan}</p>
         {currentUser.email === show.fan ? (
           <div className={ShowDetailStyles.showActions}>
-            {/* <Link href={`/shows/edit/${show.id}`}> */}
-            <span className="visually-hidden">Edit</span> &#128393;
-            {/* </Link> */}
+            <button id={`edit-${show.id}`}>
+              <span className="visually-hidden">Edit</span> &#128393;
+            </button>
             <button id={`delete-${show.id}`} onClick={handleDeleteClick}>
               <span className="visually-hidden">Delete</span> &#128465;
             </button>
