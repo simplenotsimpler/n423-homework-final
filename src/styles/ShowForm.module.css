@@ -1,6 +1,8 @@
 .showForm {
   background-color: var(--theme-dark);
-  /* color: white; */
+
+  /* TODO: decide text/input combo: primary/primary, primary/accent, accent/primary */
+
   color: var(--theme-primary);
 
   display: flex;
@@ -29,15 +31,22 @@
   font-weight: 700;
   padding: 0 0.5rem;
 }
-.showInputGroup input {
+
+.showInputGroup input,
+.showInputCharacters input {
   height: 3rem;
-  margin-bottom: 1.25rem;
   border-radius: 0.5rem;
   padding: 0.5rem;
   background-color: transparent;
   border-color: var(--theme-accent);
+  color: var(--theme-primary);
 }
 
+.showInputGroup input {
+  margin-bottom: 1.25rem;
+}
+
+/* TODO: remove if don't use */
 .showInputGroup textarea {
   height: 7rem;
   border-radius: 0.5rem;
@@ -74,15 +83,8 @@
 }
 
 .showInputCharacters input {
-  height: 3rem;
-
-  border-radius: 0.5rem;
-  padding: 0.5rem;
   width: 95%;
-
   margin-right: 2rem;
-  background-color: transparent;
-  border-color: var(--theme-accent);
 }
 
 .btnAdd {
