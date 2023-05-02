@@ -5,7 +5,9 @@
   
   1927 is when term TV as a medium came into use - https://en.wikipedia.org/wiki/Television
 */
-//TODO: fix input font colors
+
+//plus & minus sign forced to text per https://stackoverflow.com/questions/32915485/how-to-prevent-unicode-characters-from-rendering-as-emoji-in-html-from-javascrip
+//TODO: test that this works on diff. browsers & devices
 import ShowFormStyles from "../styles/ShowForm.module.css";
 import { useState, useEffect } from "react";
 import useFirebase from "@/hooks/useFirebaseDb.js";
@@ -137,7 +139,7 @@ const ShowForm = ({ showId }) => {
           className={ShowFormStyles.btnRemove}
           onClick={handleRemoveCharacter}
         >
-          -
+          &#10134;&#xFE0E;
         </button>
       </div>
     );
@@ -176,12 +178,12 @@ const ShowForm = ({ showId }) => {
         </div>
         <fieldset>
           <div className={ShowFormStyles.showCharactersHeader}>
-            <h2>Fave Characters</h2>
+            <h2>Fave Characters:</h2>
             <button
               className={ShowFormStyles.btnAdd}
               onClick={handleAddCharacter}
             >
-              +
+              &#10133;&#xFE0E;
             </button>
           </div>
 

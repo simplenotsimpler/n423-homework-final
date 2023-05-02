@@ -9,7 +9,7 @@
   flex-direction: column;
 
   width: 80%;
-  padding: 1.25rem;
+  padding: 2rem;
   border-radius: 1.5rem;
 }
 
@@ -17,6 +17,7 @@
   text-align: center;
   margin-bottom: 1rem;
   color: var(--theme-primary);
+  font-size: 2.25rem;
 }
 
 .showInputGroup {
@@ -27,7 +28,7 @@
 
 .showInputGroup label {
   margin-bottom: 0.5rem;
-  font-size: 1.15rem;
+  font-size: 1.5rem;
   font-weight: 700;
   padding: 0 0.5rem;
 }
@@ -43,7 +44,7 @@
 }
 
 .showInputGroup input {
-  margin-bottom: 1.25rem;
+  margin-bottom: 2rem;
 }
 
 /* TODO: remove if don't use */
@@ -55,7 +56,7 @@
 
 .showForm input[type="submit"] {
   height: 3rem;
-  margin-top: 1.25rem;
+  margin-top: 2rem;
   border-radius: 0.5rem;
   font-size: 1.5rem;
   font-weight: 700;
@@ -68,18 +69,19 @@
   height: 3rem;
   display: flex;
   align-items: center;
-  margin-bottom: 1.25rem;
+  margin-bottom: 2rem;
 }
 .showCharactersHeader h2 {
-  font-size: 1.15rem;
+  font-size: 1.5rem;
   width: 95%;
   margin-right: 2rem;
+  padding: 0.5rem;
 }
 
 .showInputCharacters {
   display: flex;
   align-items: center;
-  margin-bottom: 1.25rem;
+  margin-bottom: 2rem;
 }
 
 .showInputCharacters input {
@@ -94,13 +96,13 @@
   padding: 0.5rem;
   border-radius: 50%;
   border: none;
-  background-color: var(--theme-accent);
-  height: 3rem;
-  width: 30px;
-  height: 30px;
-  font-size: 1.25rem;
+
+  background-color: transparent;
+  width: 40px;
+  height: 40px;
+  font-size: 1.5rem;
   font-weight: bold;
-  color: var(--theme-dark);
+  color: var(--theme-accent);
   cursor: pointer;
 }
 
@@ -111,14 +113,13 @@
   padding: 0.5rem;
   border-radius: 50%;
   border: none;
-  /* border: solid var(--theme-accent); */
-  /* background-color: white; */
   background-color: transparent;
-  height: 3rem;
-  width: 30px;
-  height: 30px;
-  font-size: 2.5rem;
-  font-weight: bold;
+  width: 40px;
+  height: 40px;
+  font-size: 1.75rem;
+  font-weight: 700;
   color: var(--theme-accent);
   cursor: pointer;
 }
+
+
