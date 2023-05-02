@@ -13,7 +13,7 @@
   border-radius: 1.5rem;
 }
 
-.showForm h1 {
+.showForm .showFormTitle {
   text-align: center;
   margin-bottom: 1rem;
   color: var(--theme-primary);
@@ -24,6 +24,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: flex-start;
 }
 
 .showInputGroup label {
@@ -44,6 +45,7 @@
 }
 
 .showInputGroup input {
+  width: 100%;
   margin-bottom: 2rem;
 }
 
@@ -69,12 +71,11 @@
   height: 3rem;
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   margin-bottom: 2rem;
 }
-.showCharactersHeader h2 {
+.showCharactersHeader .showCharactersTitle {
   font-size: 1.5rem;
-  width: 95%;
-  margin-right: 2rem;
   padding: 0.5rem;
 }
 
@@ -104,6 +105,7 @@
   font-weight: bold;
   color: var(--theme-accent);
   cursor: pointer;
+  margin-left: auto;
 }
 
 .btnRemove {
@@ -121,5 +123,3 @@
   color: var(--theme-accent);
   cursor: pointer;
 }
-
-

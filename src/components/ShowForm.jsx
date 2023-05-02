@@ -147,7 +147,9 @@ const ShowForm = ({ showId }) => {
   return (
     <>
       <form className={ShowFormStyles.showForm} onSubmit={handleSubmit}>
-        <h1>{showId ? "Edit" : "Add"} Fave Show</h1>
+        <h1 className={ShowFormStyles.showFormTitle}>
+          {showId ? "Edit" : "Add"} Fave Show
+        </h1>
         <div className={ShowFormStyles.showInputGroup}>
           <label htmlFor="title">Title:</label>
           <input
@@ -178,7 +180,9 @@ const ShowForm = ({ showId }) => {
         </div>
         <fieldset>
           <div className={ShowFormStyles.showCharactersHeader}>
-            <h2>Fave Characters:</h2>
+            <h2 className={ShowFormStyles.showCharactersTitle}>
+              Fave Characters:
+            </h2>
             <button
               className={ShowFormStyles.btnAdd}
               onClick={handleAddCharacter}

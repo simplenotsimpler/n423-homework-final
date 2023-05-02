@@ -8,6 +8,7 @@ import useFirebaseDb from "@/hooks/useFirebaseDb.js";
 import { useRouter } from "next/router.js";
 import { useState } from "react";
 import Modal from "./Modal.jsx";
+import ShowForm from "./ShowForm.jsx";
 
 const ShowDetail = ({ show }) => {
   const { currentUser } = useAuth();
@@ -84,7 +85,7 @@ const ShowDetail = ({ show }) => {
               <span className="visually-hidden">Edit</span> &#128393;
             </button>
             <Modal isOpen={open} onClose={() => setOpen(false)}>
-              Modal Content
+              <ShowForm />
             </Modal>
             <button
               className={ShowDetailStyles.btnAction}
