@@ -6,12 +6,15 @@ import { useNotification } from "@/contexts/NotificationContext.js";
 import { MESSAGES } from "@/utils/messages.js";
 import useFirebaseDb from "@/hooks/useFirebaseDb.js";
 import { useRouter } from "next/router.js";
+import { useState } from "react";
+import Modal from "./Modal.jsx";
 
 const ShowDetail = ({ show }) => {
   const { currentUser } = useAuth();
   const { addNotification } = useNotification();
   const { deleteShow } = useFirebaseDb();
   const router = useRouter();
+  const [open, setOpen] = useState(false);
 
   const handleEditClick = (e) => {
     const showId = getTextAfterCharacter(e.target.id, "-");
@@ -73,10 +76,21 @@ const ShowDetail = ({ show }) => {
         <p>Biggest fan: {show.fan}</p>
         {currentUser.email === show.fan ? (
           <div className={ShowDetailStyles.showActions}>
-            <button id={`edit-${show.id}`}>
+            <button
+              className={ShowDetailStyles.btnAction}
+              id={`edit-${show.id}`}
+              onClick={() => setOpen(true)}
+            >
               <span className="visually-hidden">Edit</span> &#128393;
             </button>
-            <button id={`delete-${show.id}`} onClick={handleDeleteClick}>
+            <Modal isOpen={open} onClose={() => setOpen(false)}>
+              Modal Content
+            </Modal>
+            <button
+              className={ShowDetailStyles.btnAction}
+              id={`delete-${show.id}`}
+              onClick={handleDeleteClick}
+            >
               <span className="visually-hidden">Delete</span> &#128465;
             </button>
           </div>

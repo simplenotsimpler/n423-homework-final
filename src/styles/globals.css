@@ -1,7 +1,12 @@
 :root {
-  --theme-primary: #01bff1;
-  --theme-dark: #090000;
-  --theme-accent: #ff3f8a;
+  /* #01bff1  */
+  --theme-primary: rgba(1, 191, 241, 1);
+
+  /* #090000 */
+  --theme-dark: rgba(9, 0, 0, 1);
+
+  /* #ff3f8a */
+  --theme-accent: rgb(255, 63, 138, 1);
 }
 
 /* reset */
@@ -17,6 +22,18 @@ html,
 body {
   height: 100%;
   width: 100%;
+}
+
+/* reset so don't get from user-agent or font-family  */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  font-size: 1rem;
+  margin-bottom: 0;
 }
 
 /* body {
