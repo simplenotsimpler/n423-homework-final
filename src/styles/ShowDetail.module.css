@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: var(--theme-color-tertiary-muted);
+  border: solid 2px var(--theme-accent);
 }
 
 /* for responsive image stuff */
@@ -15,13 +15,12 @@
 .showHeader {
   display: flex;
   width: 100%;
-  border-bottom: solid var(--theme-color-rgba) 0.5rem;
-
-  padding-bottom: 0.5rem;
+  border-bottom: solid var(--theme-accent) 0.2rem;
 }
 
 .showHeader img {
   height: 100%;
+  border: solid 0.2rem var(--theme-accent);
 }
 .showHeaderText {
   width: 100%;
@@ -29,11 +28,11 @@
   flex-direction: column;
   justify-content: space-between;
   padding: 1.5rem 1rem;
-  color: var(--theme-color-rgba);
 }
 
 .showHeaderText h1 {
   font-size: 3rem;
+  color: var(--theme-accent);
 }
 
 .showHeaderText p {
@@ -49,7 +48,6 @@
 }
 
 .charactersTitle {
-  /* margin: 0.5rem 0; */
   font-size: 2rem;
   font-weight: 600;
   margin-bottom: 1rem;
@@ -67,7 +65,7 @@
 .showDetail footer {
   height: 50px;
   padding: 0.5rem;
-  color: white;
-  background-color: var(--theme-color-rgba);
+  border-top: solid 0.2rem;
   text-align: center;
+  color: var(--theme-accent);
 }

@@ -1,6 +1,7 @@
 .showForm {
-  background-color: black;
-  color: white;
+  background-color: var(--theme-dark);
+  /* color: white; */
+  color: var(--theme-primary);
 
   display: flex;
   flex-direction: column;
@@ -13,6 +14,7 @@
 .showForm h1 {
   text-align: center;
   margin-bottom: 1rem;
+  color: var(--theme-primary);
 }
 
 .showInputGroup {
@@ -32,6 +34,8 @@
   margin-bottom: 1.25rem;
   border-radius: 0.5rem;
   padding: 0.5rem;
+  background-color: transparent;
+  border-color: var(--theme-accent);
 }
 
 .showInputGroup textarea {
@@ -47,8 +51,8 @@
   font-size: 1.5rem;
   font-weight: 700;
   cursor: pointer;
-  background-color: var(--theme-color-rgba);
-  color: white;
+  background-color: var(--theme-accent);
+  color: var(--theme-dark);
 }
 
 .showCharactersHeader {
@@ -59,7 +63,7 @@
 }
 .showCharactersHeader h2 {
   font-size: 1.15rem;
-  width: 85%;
+  width: 95%;
   margin-right: 2rem;
 }
 
@@ -74,9 +78,11 @@
 
   border-radius: 0.5rem;
   padding: 0.5rem;
-  width: 85%;
+  width: 95%;
 
   margin-right: 2rem;
+  background-color: transparent;
+  border-color: var(--theme-accent);
 }
 
 .btnAdd {
@@ -86,13 +92,13 @@
   padding: 0.5rem;
   border-radius: 50%;
   border: none;
-  background-color: var(--theme-color-rgba);
+  background-color: var(--theme-accent);
   height: 3rem;
   width: 30px;
   height: 30px;
   font-size: 1.25rem;
   font-weight: bold;
-  color: white;
+  color: var(--theme-dark);
   cursor: pointer;
 }
 
@@ -103,12 +109,14 @@
   padding: 0.5rem;
   border-radius: 50%;
   border: none;
-  background-color: white;
+  /* border: solid var(--theme-accent); */
+  /* background-color: white; */
+  background-color: transparent;
   height: 3rem;
   width: 30px;
   height: 30px;
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: bold;
-  color: var(--theme-color-rgba);
+  color: var(--theme-accent);
   cursor: pointer;
 }

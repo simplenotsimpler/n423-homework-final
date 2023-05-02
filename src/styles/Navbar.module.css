@@ -1,18 +1,21 @@
 .navbar {
   height: 70px;
-  background-color: black;
-  color: white;
+  background-color: var(--theme-dark);
+  color: var(--theme-primary);
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0.5rem 3rem;
   font-size: 1.25rem;
   text-transform: uppercase;
+
+  box-shadow: 1px 1px 1px var(--theme-primary);
 }
 
 .logo {
   display: flex;
   align-items: center;
+  color: var(--theme-accent);
 }
 
 .logo img {
@@ -25,7 +28,7 @@
 
 .navmenu {
   list-style: none;
-  color: white;
+  color: var(--theme-primary);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -33,7 +36,7 @@
 }
 
 .navmenu a {
-  color: white;
+  color: var(--theme-primary);
   text-transform: uppercase;
   text-decoration: none;
 }
@@ -43,16 +46,7 @@
   text-decoration: underline;
   text-decoration-thickness: 2px;
   text-underline-offset: 0.5rem;
-  text-decoration-color: var(--theme-color-rgba);
-}
-
-.navmenu .btn {
-  border: none;
-  background-color: var(--theme-color-rgba);
-  color: white;
-  padding: 0.5rem;
-  border-radius: 0.5rem;
-  cursor: pointer;
+  text-decoration-color: var(--theme-accent);
 }
 
 .hamburger {
@@ -67,7 +61,7 @@
   margin: 5px auto;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
-  background-color: var(--theme-color-rgba);
+  background-color: var(--theme-accent);
 }
 
 @media only screen and (max-width: 768px) {
@@ -79,8 +73,7 @@
     justify-content: center;
     gap: 1.5rem;
 
-    /* background-color: var(--theme-color-secondary-rgba); */
-    background-color: black;
+    background-color: var(--theme-dark);
     height: 100vh;
     width: 100%;
 

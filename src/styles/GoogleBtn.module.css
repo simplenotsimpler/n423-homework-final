@@ -6,12 +6,11 @@
 
 .googleButton {
   cursor: pointer;
-  background: white;
-  color: #444;
-  /* width: 190px; */
+  background-color: var(--theme-dark);
+  color: var(--theme-accent);
   border-radius: 5px;
-  border: thin solid #888;
-  box-shadow: 1px 1px 1px grey;
+  border: thin solid var(--theme-accent);
+  box-shadow: 1px 1px 1px var(--theme-accent);
   white-space: nowrap;
 
   display: flex;
@@ -20,10 +19,9 @@
   padding: 0.5rem;
 }
 
-/* Google blue per https://developers.google.com/identity/branding-guidelines */
 .googleButton:hover,
 .googleButton:focus {
-  border: solid #4285f4;
+  border: solid var(--theme-primary);
   box-shadow: none;
 }
 

@@ -27,7 +27,7 @@ const ShowDetail = ({ show }) => {
         </ul>
       </div>
       <footer>
-        <p>Favorite fan: {show.fan}</p>
+        <p>Biggest fan: {show.fan}</p>
       </footer>
     </div>
   );

@@ -1,7 +1,9 @@
 .card {
-  background-color: white;
+  /* background-color: white; */
 
-  color: black;
+  /* color: black; */
+  background-color: var(--theme-primary);
+  color: var(--theme-dark);
   border-radius: 10px;
   cursor: pointer;
 }
@@ -29,8 +31,9 @@
 /* TODO: box shadow */
 .btnLink {
   text-decoration: none;
-  color: white;
-  background-color: var(--theme-color-rgba);
+  /* color: var(--theme-primary); */
+  color: var(--theme-dark);
+  background-color: var(--theme-accent);
   margin: 1rem;
   padding: 0.5rem;
   border-radius: 10px;
