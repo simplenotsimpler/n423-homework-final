@@ -51,8 +51,10 @@ const ShowDetail = ({ show }) => {
           <img src={dummyImgUrlLg} alt="" />
         </div>
         <div className={ShowDetailStyles.showHeaderText}>
-          <h1>{show.title}</h1>
-          <p>{show.year}</p>
+          <h1 className={ShowDetailStyles.title}>{show.title}</h1>
+          <p className={ShowDetailStyles.years}>
+            {show.startYear} - {show.endYear ? `${show.endYear}` : `present`}
+          </p>
         </div>
       </header>
       <div className={ShowDetailStyles.showBody}>

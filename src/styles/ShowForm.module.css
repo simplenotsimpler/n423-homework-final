@@ -20,6 +20,17 @@
   font-size: 2.25rem;
 }
 
+.showYears {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.showYears .showInputGroup {
+  width: 50%;
+  /* margin: 0 1rem; */
+}
+
 .showInputGroup {
   display: flex;
   flex-direction: column;
@@ -31,7 +42,7 @@
   margin-bottom: 0.5rem;
   font-size: 1.5rem;
   font-weight: 700;
-  padding: 0 0.5rem;
+  /* padding: 0 0.5rem; */
 }
 
 .showInputGroup input,
@@ -76,7 +87,7 @@
 }
 .showCharactersHeader .showCharactersTitle {
   font-size: 1.5rem;
-  padding: 0.5rem;
+  /* padding: 0.5rem; */
 }
 
 .showInputCharacters {
@@ -122,4 +133,12 @@
   font-weight: 700;
   color: var(--theme-accent);
   cursor: pointer;
+}
+
+/* TODO: make the breakpoint a variable */
+@media only screen and (max-width: 768px) {
+  .showInputGroup label,
+  .showCharactersHeader .showCharactersTitle {
+    font-size: 1.25rem;
+  }
 }

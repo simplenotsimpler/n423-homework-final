@@ -30,14 +30,15 @@
   padding: 1.5rem 1rem;
 }
 
-.showHeaderText h1 {
+.showHeaderText .title {
   font-size: 3rem;
   color: var(--theme-accent);
 }
 
-.showHeaderText p {
+.showHeaderText .years {
   font-size: 1.75rem;
   align-self: flex-end;
+  font-style: italic;
 }
 .showBody {
   display: flex;

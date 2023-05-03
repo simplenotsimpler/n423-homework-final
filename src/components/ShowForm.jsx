@@ -29,7 +29,8 @@ const ShowForm = ({ showId, currentShow }) => {
   const initialCharacters = [emptyCharacter, emptyCharacter];
   const initialShowState = {
     title: "",
-    year: "",
+    startYear: "",
+    endYear: "",
     characters: initialCharacters,
   };
 
@@ -166,20 +167,37 @@ const ShowForm = ({ showId, currentShow }) => {
           />
         </div>
 
-        <div className={ShowFormStyles.showInputGroup}>
-          <label htmlFor="year">Year:</label>
-          <input
-            type="number"
-            name="year"
-            id="year"
-            placeholder="Year..."
-            min="1927"
-            max="2099"
-            step="1"
-            value={formShow.year}
-            onChange={handleChange}
-            required
-          />
+        <div className={ShowFormStyles.showYears}>
+          <div className={ShowFormStyles.showInputGroup}>
+            <label htmlFor="startYear">Start Year:</label>
+            <input
+              type="number"
+              name="startYear"
+              id="startYear"
+              placeholder="Start Year..."
+              min="1927"
+              max="2099"
+              step="1"
+              value={formShow.startYear}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className={ShowFormStyles.showInputGroup}>
+            <label htmlFor="endYear">End Year:</label>
+            <input
+              type="number"
+              name="endYear"
+              id="endYear"
+              placeholder="End Year..."
+              min="1927"
+              max="2099"
+              step="1"
+              value={formShow.endYear}
+              onChange={handleChange}
+              required
+            />
+          </div>
         </div>
         <fieldset>
           <div className={ShowFormStyles.showCharactersHeader}>
