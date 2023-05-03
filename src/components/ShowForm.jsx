@@ -16,14 +16,14 @@ import { useAuth } from "@/contexts/AuthContext.js";
 import { useNotification } from "@/contexts/NotificationContext.js";
 import { MESSAGES } from "@/utils/messages.js";
 
-const ShowForm = ({ showId }) => {
+const ShowForm = ({ showId, currentShow }) => {
   const { currentUser } = useAuth();
   const { addShow, updateShow } = useFirebase();
   const { addNotification } = useNotification();
 
   //characters - array of objects not array of strings. when just use strings the item is undefined when try to map it
 
-  //TODO: do I want start with empty characters? if so need to check for empty string when saving
+  //TODO: do I want start with empty characters? if so need to check for empty string when saving, at least still want empty array??
   const emptyCharacter = { name: "" };
   const initialCharacters = [emptyCharacter, emptyCharacter];
   const initialShowState = {
@@ -37,13 +37,17 @@ const ShowForm = ({ showId }) => {
   const router = useRouter();
 
   useEffect(() => {
-    if (!showId) {
+    if (showId || currentShow) {
+      setFormShow(currentShow);
+    } else {
       setFormShow(initialShowState);
     }
 
     //clean up
-    return () => {};
-  }, [showId]);
+    return () => {
+      setFormShow(initialShowState);
+    };
+  }, [showId, currentShow]);
 
   //TODO: maybe make fan whole current user object?
   const createShow = async () => {
@@ -116,9 +120,7 @@ const ShowForm = ({ showId }) => {
     changed _character so don't get the warning per 1st answer in https://stackoverflow.com/questions/50011443/tslint-how-to-disable-error-somevariable-is-declared-but-its-value-is-never-rea
     */
 
-  //TODO: when add edit function, check if characters length >0
-
-  const characterInputs = formShow.characters.map((_character, index) => {
+  const characterInputs = formShow.characters?.map((_character, index) => {
     return (
       <div className={ShowFormStyles.showInputCharacters} key={index}>
         <input

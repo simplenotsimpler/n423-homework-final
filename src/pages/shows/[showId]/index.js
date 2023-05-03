@@ -19,13 +19,13 @@ const ShowDetailPage = () => {
       getShowById(showId);
     } catch (error) {
       console.log(error);
+      //TODO: notification of issue
     } finally {
       setIsLoading(false);
     }
 
     //clean up
     return () => {
-      // setCurrentShow(null);
       setIsLoading(false);
     };
   }, [router.isReady, showId, currentShow]);
