@@ -42,17 +42,17 @@
 }
 
 .success {
-  background-color: #5cb85c;
+  background-color: var(--color-success);
 }
 
 .error {
-  background-color: #d9534f;
+  background-color: var(--color-error);
 }
 
 .info {
-  background-color: #5bc0de;
+  background-color: var(--color-info);
 }
 
 .warning {
-  background-color: #f0ad4e;
+  background-color: var(--color-warning);
 }

@@ -7,6 +7,12 @@
 
   /* #ff3f8a */
   --theme-accent: rgb(255, 63, 138, 1);
+
+  /* standard notification colors so can use anywhere */
+  --color-success: #5cb85c;
+  --color-error: #d9534f;
+  --color-info: #5bc0de;
+  --color-warning: #f0ad4e;
 }
 
 /* reset */
