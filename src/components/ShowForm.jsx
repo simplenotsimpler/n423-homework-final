@@ -23,7 +23,8 @@ const ShowForm = ({ showId, currentShow }) => {
 
   //characters - array of objects not array of strings. when just use strings the item is undefined when try to map it
 
-  //TODO: do I want start with empty characters? if so need to check for empty string when saving, at least still want empty array??
+  //TODO: do I want start with empty characters?
+  //TODO: check if character is empty when saving & don't save empty character
   const emptyCharacter = { name: "" };
   const initialCharacters = [emptyCharacter, emptyCharacter];
   const initialShowState = {
@@ -65,7 +66,7 @@ const ShowForm = ({ showId, currentShow }) => {
   const editShow = async () => {
     try {
       await updateShow(showId, formShow);
-      addNotification(MESSAGES.SUCCESS_UPDATE_SHOW, "sucess");
+      addNotification(MESSAGES.SUCCESS_UPDATE_SHOW, "success");
     } catch (error) {
       addNotification(MESSAGES.ERROR_UPDATE_SHOW, "error");
     }
@@ -74,10 +75,17 @@ const ShowForm = ({ showId, currentShow }) => {
   const handleAddCharacter = (e) => {
     e.preventDefault();
 
-    setFormShow({
-      ...formShow,
-      characters: [...formShow.characters, emptyCharacter],
-    });
+    if (!formShow.characters) {
+      setFormShow({
+        ...formShow,
+        characters: [emptyCharacter],
+      });
+    } else {
+      setFormShow({
+        ...formShow,
+        characters: [...formShow.characters, emptyCharacter],
+      });
+    }
   };
 
   const handleRemoveCharacter = (index) => {
