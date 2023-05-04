@@ -6,6 +6,8 @@
   1927 is when term TV as a medium came into use - https://en.wikipedia.org/wiki/Television
 
   Use text not number input type for this use case. See https://technology.blog.gov.uk/2020/02/24/why-the-gov-uk-design-system-team-changed-the-input-type-for-numbers/
+
+  regex year pattern from https://stackoverflow.com/questions/49912774/javascript-regex-validate-input-year-between-1945-current-year
 */
 
 //TODO: test that +/- icons work on diff. browsers & devices
@@ -189,7 +191,7 @@ const ShowForm = ({ showId, currentShow }) => {
               inputmode="numeric"
               minLength="4"
               maxlength="4"
-              pattern="(1927|2\d\d\d)"
+              pattern="(192[7-9]|19[5-9][0-9]|20\d\d)"
               name="startYear"
               id="startYear"
               placeholder="Start Year..."
@@ -208,13 +210,12 @@ const ShowForm = ({ showId, currentShow }) => {
               inputmode="numeric"
               minLength="4"
               maxlength="4"
-              pattern="(1927|2\d\d\d)"
+              pattern="(192[7-9]|19[5-9][0-9]|20\d\d)"
               name="endYear"
               id="endYear"
               placeholder="End Year..."
               value={formShow.endYear}
               onChange={handleChange}
-              required
               className={ShowFormStyles.showInput}
             />
           </div>
