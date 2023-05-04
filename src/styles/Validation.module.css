@@ -1,0 +1,8 @@
+.validation {
+  margin: 0.5rem 0rem;
+  padding: 0.5rem;
+  background-color: var(--color-error);
+  color: white;
+  font-size: 1rem;
+  width: 100%;
+}
