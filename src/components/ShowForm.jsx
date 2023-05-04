@@ -19,6 +19,7 @@ import { useRouter } from "next/router.js";
 import { useAuth } from "@/contexts/AuthContext.js";
 import { useNotification } from "@/contexts/NotificationContext.js";
 import { MESSAGES } from "@/utils/messages.js";
+import Validation from "./Validation.jsx";
 
 const ShowForm = ({ showId, currentShow }) => {
   const { currentUser } = useAuth();
@@ -153,6 +154,7 @@ const ShowForm = ({ showId, currentShow }) => {
             &#10134;&#xFE0E;
           </button>
         </div>
+        <Validation>test</Validation>
       </div>
     );
   });
@@ -176,6 +178,7 @@ const ShowForm = ({ showId, currentShow }) => {
             required
             className={ShowFormStyles.showInput}
           />
+          <Validation>test</Validation>
         </div>
 
         <div className={ShowFormStyles.showYears}>
@@ -200,6 +203,7 @@ const ShowForm = ({ showId, currentShow }) => {
               required
               className={ShowFormStyles.showInput}
             />
+            <Validation>test</Validation>
           </div>
           <div className={ShowFormStyles.showInputGroup}>
             <label htmlFor="endYear" className={ShowFormStyles.showInputLabel}>
@@ -218,6 +222,7 @@ const ShowForm = ({ showId, currentShow }) => {
               onChange={handleChange}
               className={ShowFormStyles.showInput}
             />
+            <Validation>test</Validation>
           </div>
         </div>
         <fieldset>
