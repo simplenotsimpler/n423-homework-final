@@ -28,7 +28,7 @@ const ShowForm = ({ showId, currentShow }) => {
   //TODO: do I want start with empty characters?
   //TODO: check if character is empty when saving & don't save empty character
   const emptyCharacter = { name: "" };
-  const initialCharacters = [emptyCharacter, emptyCharacter];
+  const initialCharacters = [];
   const initialShowState = {
     title: "",
     startYear: "",
@@ -140,6 +140,7 @@ const ShowForm = ({ showId, currentShow }) => {
           placeholder={`Character ${index + 1}`}
           value={formShow.characters[index].name}
           onChange={(e) => handleInputChangeCharacters(e, index)}
+          required
         />
         <button
           className={ShowFormStyles.btnRemove}
