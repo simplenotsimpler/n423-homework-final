@@ -4,6 +4,8 @@
   https://stackoverflow.com/questions/34676752/can-i-use-an-html-input-type-date-to-collect-only-a-year
   
   1927 is when term TV as a medium came into use - https://en.wikipedia.org/wiki/Television
+
+  Use text not number input type for this use case. See https://technology.blog.gov.uk/2020/02/24/why-the-gov-uk-design-system-team-changed-the-input-type-for-numbers/
 */
 
 //TODO: test that +/- icons work on diff. browsers & devices
@@ -171,13 +173,14 @@ const ShowForm = ({ showId, currentShow }) => {
           <div className={ShowFormStyles.showInputGroup}>
             <label htmlFor="startYear">Start Year:</label>
             <input
-              type="number"
+              type="text"
+              inputmode="numeric"
+              minLength="4"
+              maxlength="4"
+              pattern="(1927|2\d\d\d)"
               name="startYear"
               id="startYear"
               placeholder="Start Year..."
-              min="1927"
-              max="2099"
-              step="1"
               value={formShow.startYear}
               onChange={handleChange}
               required
@@ -186,13 +189,14 @@ const ShowForm = ({ showId, currentShow }) => {
           <div className={ShowFormStyles.showInputGroup}>
             <label htmlFor="endYear">End Year:</label>
             <input
-              type="number"
+              type="text"
+              inputmode="numeric"
+              minLength="4"
+              maxlength="4"
+              pattern="(1927|2\d\d\d)"
               name="endYear"
               id="endYear"
               placeholder="End Year..."
-              min="1927"
-              max="2099"
-              step="1"
               value={formShow.endYear}
               onChange={handleChange}
               required
