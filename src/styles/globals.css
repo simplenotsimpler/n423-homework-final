@@ -9,10 +9,14 @@
   --theme-accent: rgb(255, 63, 138, 1);
 
   /* standard notification colors so can use anywhere */
-  --color-success: #5cb85c;
-  --color-error: #d9534f;
-  --color-info: #5bc0de;
-  --color-warning: #f0ad4e;
+  /* 
+    colors from material ui https://materialui.co/colors/ 
+    
+  */
+  --color-success: #00c853;
+  --color-error: #ff1744;
+  --color-info: #2979ff;
+  --color-warning: #ffd600;
 }
 
 /* reset */
