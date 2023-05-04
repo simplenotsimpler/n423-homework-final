@@ -1,8 +1,6 @@
 .showForm {
   background-color: var(--theme-dark);
 
-  /* TODO: decide text/input combo: primary/primary, primary/accent, accent/primary */
-
   color: var(--theme-primary);
 
   display: flex;
@@ -20,33 +18,22 @@
   font-size: 2.25rem;
 }
 
-.showYears {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.showYears .showInputGroup {
-  width: 50%;
-  /* margin: 0 1rem; */
-}
-
 .showInputGroup {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+  margin-bottom: 1.5rem;
 }
 
-.showInputGroup label {
+.showInputGroup .showInputLabel {
   margin-bottom: 0.5rem;
   font-size: 1.5rem;
   font-weight: 700;
-  /* padding: 0 0.5rem; */
 }
 
-.showInputGroup input,
-.showInputCharacters input {
+.showInputGroup .showInput,
+.showInputCharacters .showInput {
   height: 3rem;
   border-radius: 0.5rem;
   padding: 0.5rem;
@@ -55,27 +42,19 @@
   color: var(--theme-primary);
 }
 
-.showInputGroup input {
+.showInputGroup .showInput {
   width: 100%;
   margin-bottom: 2rem;
 }
 
-/* TODO: remove if don't use */
-.showInputGroup textarea {
-  height: 7rem;
-  border-radius: 0.5rem;
-  padding: 0.5rem;
+.showYears {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
-.showForm input[type="submit"] {
-  height: 3rem;
-  margin-top: 2rem;
-  border-radius: 0.5rem;
-  font-size: 1.5rem;
-  font-weight: 700;
-  cursor: pointer;
-  background-color: var(--theme-accent);
-  color: var(--theme-dark);
+.showYears .showInputGroup {
+  width: 50%;
 }
 
 .showCharactersHeader {
@@ -87,18 +66,18 @@
 }
 .showCharactersHeader .showCharactersTitle {
   font-size: 1.5rem;
-  /* padding: 0.5rem; */
 }
 
-.showInputCharacters {
+.showInputGroup .showInputCharacters {
   display: flex;
   align-items: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
+  width: 100%;
 }
 
-.showInputCharacters input {
+.showInputCharacters .showInput {
   width: 95%;
-  margin-right: 2rem;
+  margin-right: 1.5rem;
 }
 
 .btnAdd {
@@ -135,9 +114,20 @@
   cursor: pointer;
 }
 
+.showForm .btnSubmit {
+  height: 3rem;
+  margin-top: 2rem;
+  border-radius: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  cursor: pointer;
+  background-color: var(--theme-accent);
+  color: var(--theme-dark);
+}
+
 /* TODO: make the breakpoint a variable */
 @media only screen and (max-width: 768px) {
-  .showInputGroup label,
+  .showInputGroup .showInputLabel,
   .showCharactersHeader .showCharactersTitle {
     font-size: 1.25rem;
   }

@@ -133,21 +133,24 @@ const ShowForm = ({ showId, currentShow }) => {
 
   const characterInputs = formShow.characters?.map((_character, index) => {
     return (
-      <div className={ShowFormStyles.showInputCharacters} key={index}>
-        <input
-          type="text"
-          name="characters"
-          placeholder={`Character ${index + 1}`}
-          value={formShow.characters[index].name}
-          onChange={(e) => handleInputChangeCharacters(e, index)}
-          required
-        />
-        <button
-          className={ShowFormStyles.btnRemove}
-          onClick={handleRemoveCharacter}
-        >
-          &#10134;&#xFE0E;
-        </button>
+      <div className={ShowFormStyles.showInputGroup}>
+        <div className={ShowFormStyles.showInputCharacters} key={index}>
+          <input
+            type="text"
+            name="characters"
+            placeholder={`Character ${index + 1}`}
+            value={formShow.characters[index].name}
+            onChange={(e) => handleInputChangeCharacters(e, index)}
+            required
+            className={ShowFormStyles.showInput}
+          />
+          <button
+            className={ShowFormStyles.btnRemove}
+            onClick={handleRemoveCharacter}
+          >
+            &#10134;&#xFE0E;
+          </button>
+        </div>
       </div>
     );
   });
@@ -158,7 +161,9 @@ const ShowForm = ({ showId, currentShow }) => {
           {showId ? "Edit" : "Add"} Fave Show
         </h1>
         <div className={ShowFormStyles.showInputGroup}>
-          <label htmlFor="title">Title:</label>
+          <label htmlFor="title" className={ShowFormStyles.showInputLabel}>
+            Title:
+          </label>
           <input
             type="text"
             name="title"
@@ -167,12 +172,18 @@ const ShowForm = ({ showId, currentShow }) => {
             value={formShow.title}
             onChange={handleChange}
             required
+            className={ShowFormStyles.showInput}
           />
         </div>
 
         <div className={ShowFormStyles.showYears}>
           <div className={ShowFormStyles.showInputGroup}>
-            <label htmlFor="startYear">Start Year:</label>
+            <label
+              htmlFor="startYear"
+              className={ShowFormStyles.showInputLabel}
+            >
+              Start Year:
+            </label>
             <input
               type="text"
               inputmode="numeric"
@@ -185,10 +196,13 @@ const ShowForm = ({ showId, currentShow }) => {
               value={formShow.startYear}
               onChange={handleChange}
               required
+              className={ShowFormStyles.showInput}
             />
           </div>
           <div className={ShowFormStyles.showInputGroup}>
-            <label htmlFor="endYear">End Year:</label>
+            <label htmlFor="endYear" className={ShowFormStyles.showInputLabel}>
+              End Year:
+            </label>
             <input
               type="text"
               inputmode="numeric"
@@ -201,6 +215,7 @@ const ShowForm = ({ showId, currentShow }) => {
               value={formShow.endYear}
               onChange={handleChange}
               required
+              className={ShowFormStyles.showInput}
             />
           </div>
         </div>
@@ -224,6 +239,7 @@ const ShowForm = ({ showId, currentShow }) => {
           type="submit"
           value={showId ? "Update Show" : "Add Show"}
           aria-label="submit-show"
+          className={ShowFormStyles.btnSubmit}
         />
       </form>
     </>

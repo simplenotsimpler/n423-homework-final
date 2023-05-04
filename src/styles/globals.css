@@ -49,12 +49,15 @@ p {
 } */
 /* reset for forms */
 /* https://developer.mozilla.org/en-US/docs/Learn/Forms/Styling_web_forms */
+form,
 button,
 input,
 select,
 textarea {
   font-family: inherit;
   font-size: 100%;
+  /* not sure why this does not work without !important */
+  margin-bottom: 0 !important;
 }
 
 fieldset {
