@@ -5,7 +5,9 @@ import Link from "next/link.js";
 const Show = ({ show }) => {
   return (
     <div className={ShowStyles.card}>
-      <img src={dummyImgUrl} alt="" />
+      <div className={ShowStyles.imageHolder}>
+        <img src={dummyImgUrl} alt="" />
+      </div>
       <div className={ShowStyles.content}>
         <p className={ShowStyles.title}>{show.title}</p>
         <p className={ShowStyles.year}>
