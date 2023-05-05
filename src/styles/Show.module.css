@@ -6,6 +6,8 @@
   color: var(--theme-dark);
   border-radius: 10px;
   cursor: pointer;
+  flex: 1 1 25%;
+  max-width: 200px;
 }
 
 .card img {
@@ -16,11 +18,24 @@
   padding: 0.5rem;
   display: flex;
   flex-direction: column;
+  gap: 1rem;
+  min-height: 200px;
+  flex-basis: 200px;
 }
 
 .title {
   font-size: 1.15rem;
   font-weight: 500;
+  min-height: 4rem;
+  max-height: 4rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
+
+  /* https://kiranworkspace.com/ellipsis-to-multiline-text-in-css/ */
+  display: -webkit-box !important;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  white-space: normal;
 }
 
 .year {
