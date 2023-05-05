@@ -1,10 +1,11 @@
 import Show from "./Show.jsx";
 import ShowsListStyles from "../styles/ShowsList.module.css";
 import { useShows } from "@/contexts/ShowsContext.js";
+import { useAuth } from "@/contexts/AuthContext.js";
 
 const ShowsList = () => {
   const { shows } = useShows();
-
+  const { currentUser } = useAuth();
   const showsListComponents = shows.map((show) => {
     return (
       <li key={show.id}>
@@ -14,7 +15,18 @@ const ShowsList = () => {
   });
   return (
     <>
-      <ul className={ShowsListStyles.showsList}>{showsListComponents}</ul>
+      {shows.length === 0 ? (
+        <div className={ShowsListStyles.noShows}>
+          <p className={ShowsListStyles.noShowsText}>Sorry, no shows yet.</p>
+          {!currentUser && (
+            <p className={ShowsListStyles.noShowsText}>
+              Sign in to add your fave TV show.
+            </p>
+          )}
+        </div>
+      ) : (
+        <ul className={ShowsListStyles.showsList}>{showsListComponents}</ul>
+      )}
     </>
   );
 };
