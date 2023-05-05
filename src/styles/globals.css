@@ -1,3 +1,10 @@
+/* 
+  NOTE: can't use variables for breakpoints yet. Documenting these at least for future reference:
+
+  laptop: 768px
+  mobile: 600px
+*/
+
 :root {
   /* #01bff1  */
   --theme-primary: rgba(1, 191, 241, 1);

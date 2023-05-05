@@ -125,7 +125,6 @@
   color: var(--theme-dark);
 }
 
-/* TODO: make the breakpoint a variable */
 @media only screen and (max-width: 768px) {
   .showInputGroup .showInputLabel,
   .showCharactersHeader .showCharactersTitle {
