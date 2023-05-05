@@ -26,10 +26,13 @@ export const ShowsProvider = ({ children }) => {
     // return show;
   };
 
+  //update less often because we're on free plan
+  //30 minutes * 60 seconds * 1000 millseconds
+  const thirtyMinutesInMilliseconds = 30 * 60 * 1000;
   useEffect(() => {
     const intervalId = setInterval(() => {
       getShowsFromDb();
-    }, 5000);
+    }, thirtyMinutesInMilliseconds);
 
     getShowsFromDb();
     return () => clearInterval(intervalId);
