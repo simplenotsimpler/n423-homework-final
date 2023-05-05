@@ -1,5 +1,5 @@
 import ShowDetailStyles from "../styles/ShowDetail.module.css";
-import { dummyImgUrlLg } from "@/utils/helpers.js";
+import { dummyImgUrlBlue } from "@/utils/helpers.js";
 import { useAuth } from "@/contexts/AuthContext.js";
 import { getTextAfterCharacter } from "@/utils/helpers.js";
 import { useNotification } from "@/contexts/NotificationContext.js";
@@ -48,7 +48,7 @@ const ShowDetail = ({ show }) => {
     <div className={ShowDetailStyles.showDetail}>
       <header className={ShowDetailStyles.showHeader}>
         <div className={ShowDetailStyles.imgHolder}>
-          <img src={dummyImgUrlLg} alt="" />
+          <img src={dummyImgUrlBlue} alt="" />
         </div>
         <div className={ShowDetailStyles.showHeaderText}>
           <h1 className={ShowDetailStyles.title}>{show.title}</h1>
