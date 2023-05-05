@@ -72,7 +72,7 @@ const ShowDetail = ({ show }) => {
       </div>
       <footer>
         <p>Biggest fan: {show.fan}</p>
-        {currentUser.email === show.fan ? (
+        {currentUser?.email === show.fan ? (
           <div className={ShowDetailStyles.showActions}>
             <Link href={`/shows/${show.id}/edit/`}>
               <span className="visually-hidden">Edit</span> &#128393;
