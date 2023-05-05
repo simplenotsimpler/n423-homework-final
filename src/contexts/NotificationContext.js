@@ -14,7 +14,10 @@ export const NotificationProvider = ({ children }) => {
 
   const removeNotification = () => setNotification(null);
 
-  const addNotification = (message, type) => setNotification({ message, type });
+  const addNotification = (message, type) => {
+    setNotification({ message, type });
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  };
 
   const value = {
     notification,

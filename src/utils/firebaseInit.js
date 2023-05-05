@@ -9,6 +9,7 @@ const firebaseConfig = {
   appId: process.env.NEXT_PUBLIC_APP_ID,
 };
 
+//TODO: add try/catch to catch quota, etc. errors
 const app = firebase.initializeApp(firebaseConfig);
 export const auth = app.auth();
 export const db = app.firestore();

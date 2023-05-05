@@ -7,7 +7,7 @@
 
   Use text not number input type for this use case. See https://technology.blog.gov.uk/2020/02/24/why-the-gov-uk-design-system-team-changed-the-input-type-for-numbers/
 
-  regex year pattern from https://stackoverflow.com/questions/49912774/javascript-regex-validate-input-year-between-1945-current-year
+  regex year pattern from https://stackoverflow.com/questions/49912774/javascript-regex-handleValidation-input-year-between-1945-current-year
 */
 
 //TODO: test that +/- icons work on diff. browsers & devices
@@ -20,6 +20,7 @@ import { useAuth } from "@/contexts/AuthContext.js";
 import { useNotification } from "@/contexts/NotificationContext.js";
 import { MESSAGES } from "@/utils/messages.js";
 import Validation from "./Validation.jsx";
+import { VALIDATION_MESSAGES } from "@/utils/messages.js";
 
 const ShowForm = ({ showId, currentShow }) => {
   const { currentUser } = useAuth();
@@ -30,6 +31,7 @@ const ShowForm = ({ showId, currentShow }) => {
 
   //TODO: do I want start with empty characters?
   //TODO: check if character is empty when saving & don't save empty character
+  //TODO: fix - getting key error again on 39:11, maybe need to use uuid?
   const emptyCharacter = { name: "" };
   const initialCharacters = [];
   const initialShowState = {
@@ -40,6 +42,7 @@ const ShowForm = ({ showId, currentShow }) => {
   };
 
   const [formShow, setFormShow] = useState(initialShowState);
+  const [formErrors, setFormErrors] = useState({});
 
   const router = useRouter();
 
@@ -56,7 +59,7 @@ const ShowForm = ({ showId, currentShow }) => {
     };
   }, [showId, currentShow]);
 
-  //TODO: maybe make fan whole current user object?
+  //FUTURE: maybe make fan whole current user object?
   const createShow = async () => {
     const newShow = { ...formShow, fan: currentUser.email };
 
@@ -101,8 +104,9 @@ const ShowForm = ({ showId, currentShow }) => {
   };
 
   //NOTE: don't try to combine since the state change in characters affects renders
-  const handleChange = (e) =>
+  const handleChange = (e) => {
     setFormShow({ ...formShow, [e.target.name]: e.target.value });
+  };
 
   const handleInputChangeCharacters = (e, index) => {
     const values = [...formShow.characters];
@@ -110,23 +114,78 @@ const ShowForm = ({ showId, currentShow }) => {
     setFormShow({ ...formShow, characters: [...values] });
   };
 
+  /* FUTURE ENHANCMENT: remove error after user leaves input. not implemented since we're not using onBlur & validating after submit */
+  // https://stackoverflow.com/questions/41296668/how-do-i-add-validation-to-the-form-in-my-react-component
+  const handleValidation = (values) => {
+    console.log("handleValidation > values", values);
+    let errors = {};
+    let formIsValid = true;
+    // let characters = [];
+    //TV invented in 1927 so YYYY after 1927
+    const regex = /^(192[7-9]|19[5-9][0-9]|20\d\d)$/i;
+
+    if (!values.title) {
+      errors.title = VALIDATION_MESSAGES.valueMissing.title;
+    } else {
+      delete errors.title;
+    }
+
+    const characterErrors = [];
+    values.characters.forEach((character) => {
+      if (character.name === "") {
+        characterErrors.push(VALIDATION_MESSAGES.valueMissing.character);
+      }
+    });
+
+    if (characterErrors.length > 0) {
+      errors.characters = characterErrors;
+    } else {
+      delete errors.characters;
+    }
+
+    if (!values.startYear) {
+      errors.startYear = VALIDATION_MESSAGES.valueMissing.startYear;
+    } else if (!regex.test(values.startYear)) {
+      errors.startYear = VALIDATION_MESSAGES.patternMismatch.startYear;
+    } else {
+      delete errors.startYear;
+    }
+
+    if (!regex.test(values.endYear)) {
+      errors.endYear = VALIDATION_MESSAGES.patternMismatch.endYear;
+    } else if (values.endYear < values.startYear) {
+      errors.endYear = VALIDATION_MESSAGES.rangeUnderflow.endYear;
+    } else {
+      delete errors.endYear;
+    }
+
+    if (Object.keys(errors).length > 0) {
+      formIsValid = false;
+    }
+    setFormErrors(errors);
+    return formIsValid;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (showId) {
-      await editShow();
-      router.push("/");
+    if (handleValidation(formShow)) {
+      if (showId) {
+        await editShow();
+        router.push("/");
+      } else {
+        await createShow();
+
+        //does not work with this set up b/c state has updated show
+        // e.target.reset();
+        //reset form by resetting the show state
+        //https://stackoverflow.com/questions/63475521/how-to-clear-input-field-after-a-successful-submittion-in-react-using-useeffect
+        setFormShow(initialShowState);
+      }
     } else {
-      await createShow();
-
-      //does not work with this set up b/c state has updated show
-      // e.target.reset();
-      //reset form by resetting the show state
-      //https://stackoverflow.com/questions/63475521/how-to-clear-input-field-after-a-successful-submittion-in-react-using-useeffect
-      setFormShow(initialShowState);
+      addNotification(MESSAGES.ERROR_VALIDATION_FAILED, "error");
+      return false;
     }
-
-    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   };
 
   /* 
@@ -144,7 +203,6 @@ const ShowForm = ({ showId, currentShow }) => {
             placeholder={`Character ${index + 1}`}
             value={formShow.characters[index].name}
             onChange={(e) => handleInputChangeCharacters(e, index)}
-            required
             className={ShowFormStyles.showInput}
           />
           <button
@@ -154,10 +212,14 @@ const ShowForm = ({ showId, currentShow }) => {
             &#10134;&#xFE0E;
           </button>
         </div>
-        <Validation>test</Validation>
+        {formErrors.characters?.[index] && (
+          <Validation>{formErrors?.characters?.[index]}</Validation>
+        )}
       </div>
     );
   });
+
+  //TODO: fix years errors - when one has error & other doesn't, gets lopsided
   return (
     <>
       <form className={ShowFormStyles.showForm} onSubmit={handleSubmit}>
@@ -175,10 +237,9 @@ const ShowForm = ({ showId, currentShow }) => {
             placeholder="Title..."
             value={formShow.title}
             onChange={handleChange}
-            required
             className={ShowFormStyles.showInput}
           />
-          <Validation>test</Validation>
+          {formErrors.title && <Validation>{formErrors.title}</Validation>}
         </div>
 
         <div className={ShowFormStyles.showYears}>
@@ -191,19 +252,17 @@ const ShowForm = ({ showId, currentShow }) => {
             </label>
             <input
               type="text"
-              inputmode="numeric"
-              minLength="4"
-              maxlength="4"
-              pattern="(192[7-9]|19[5-9][0-9]|20\d\d)"
+              inputMode="numeric"
               name="startYear"
               id="startYear"
-              placeholder="Start Year..."
+              placeholder="yyyy"
               value={formShow.startYear}
               onChange={handleChange}
-              required
               className={ShowFormStyles.showInput}
             />
-            <Validation>test</Validation>
+            {formErrors.startYear && (
+              <Validation>{formErrors.startYear}</Validation>
+            )}
           </div>
           <div className={ShowFormStyles.showInputGroup}>
             <label htmlFor="endYear" className={ShowFormStyles.showInputLabel}>
@@ -211,18 +270,17 @@ const ShowForm = ({ showId, currentShow }) => {
             </label>
             <input
               type="text"
-              inputmode="numeric"
-              minLength="4"
-              maxlength="4"
-              pattern="(192[7-9]|19[5-9][0-9]|20\d\d)"
+              inputMode="numeric"
               name="endYear"
               id="endYear"
-              placeholder="End Year..."
+              placeholder="yyyy"
               value={formShow.endYear}
               onChange={handleChange}
               className={ShowFormStyles.showInput}
             />
-            <Validation>test</Validation>
+            {formErrors.endYear && (
+              <Validation>{formErrors.endYear}</Validation>
+            )}
           </div>
         </div>
         <fieldset>

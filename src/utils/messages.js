@@ -23,4 +23,20 @@ export const MESSAGES = {
   ERROR_FETCH_SHOWS: "Error fetching shows",
   SUCCESS_FETCH_SHOW_BY_ID: "Fetched show",
   ERROR_FETCH_SHOW_BY_ID: "Error fetching show",
+  ERROR_VALIDATION_FAILED: "Unable to submit. See errors below.",
+};
+
+export const VALIDATION_MESSAGES = {
+  valueMissing: {
+    title: "Please enter a title",
+    startYear: "Please enter a start year",
+    character: "Please enter a character or remove it.",
+  },
+  patternMismatch: {
+    startYear: "Please enter a year after 1927 in the yyyy format.",
+    endYear: "Please enter a year after 1927 in the yyyy format.",
+  },
+  rangeUnderflow: {
+    endYear: "End Year must be equal to or after Start Year.",
+  },
 };
