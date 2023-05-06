@@ -24,13 +24,14 @@ const EditShowPage = () => {
 
   //grab the show here. this ensures gets show fresh in case user comes directly to link rather than from index.
   //also allows to manage the loading state better
+  //TODO: move try catch & loading to context
   useEffect(() => {
     setIsLoading(true);
     if (!router.isReady || !showId) return;
     try {
       getShowById(showId);
     } catch (error) {
-      console.log(error);      
+      console.log(error);
       addNotification(MESSAGES.ERROR_FETCH_SHOW_BY_ID, "error");
     } finally {
       setIsLoading(false);
