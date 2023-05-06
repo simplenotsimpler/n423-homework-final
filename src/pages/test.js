@@ -1,6 +1,7 @@
 import { ModalContext } from "@/contexts/ModalContext.js";
 import Modal from "@/components/Modal.jsx";
 import { useContext } from "react";
+import Dialog from "@/components/Dialog.jsx";
 
 const Test = () => {
   const { openModal, setOpenModal } = useContext(ModalContext);
@@ -9,19 +10,14 @@ const Test = () => {
     <div>
       {openModal && (
         <Modal>
-          {/*Custom Modal Component*/}
-          <div
-            style={{
-              width: "300px",
-              height: "300px",
-              backgroundColor: "white",
-              borderRadius: "10px",
-              display: "grid",
-              placeItems: "center",
-            }}
+          <Dialog
+            onConfirm={() => console.log("Confirmed")}
+            onCancel={() => setOpenModal(false)}
+            title="This is the title"
+            isDelete={true}
           >
-            This is Modal
-          </div>
+            This is a dialog
+          </Dialog>
         </Modal>
       )}
       <button onClick={() => setOpenModal(true)}>Open Modal</button>

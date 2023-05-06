@@ -1,6 +1,7 @@
 .modalBackground {
   position: absolute;
   width: 100vw;
+  /* TODO: fix - less the footer */
   height: 100vh;
   background-color: rgba(9, 0, 0, 0.7);
   /* backdrop-filter: blur(9px); */
