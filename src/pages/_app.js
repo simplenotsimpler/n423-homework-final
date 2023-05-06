@@ -11,6 +11,7 @@ import { Roboto } from "next/font/google";
 import { AuthProvider } from "@/contexts/AuthContext.js";
 import { NotificationProvider } from "@/contexts/NotificationContext.js";
 import { ShowsProvider } from "@/contexts/ShowsContext.js";
+import { ModalProvider } from "@/contexts/ModalContext.js";
 
 const roboto = Roboto({
   display: "swap",
@@ -26,15 +27,17 @@ export default function App({ Component, pageProps }) {
           --roboto-font: ${roboto.style.fontFamily};
         }
       `}</style>
-      <NotificationProvider>
-        <AuthProvider>
-          <ShowsProvider>
-            <Layout>
-              <Component {...pageProps} />
-            </Layout>
-          </ShowsProvider>
-        </AuthProvider>
-      </NotificationProvider>
+      <ModalProvider>
+        <NotificationProvider>
+          <AuthProvider>
+            <ShowsProvider>
+              <Layout>
+                <Component {...pageProps} />
+              </Layout>
+            </ShowsProvider>
+          </AuthProvider>
+        </NotificationProvider>
+      </ModalProvider>
     </>
   );
 }

@@ -1,26 +1,25 @@
+// https://javascript.plainenglish.io/how-to-handle-modals-in-a-large-scale-next-js-project-4565a29b86d1
+
+import React, { useContext } from "react";
+import { createPortal } from "react-dom";
 import ModalStyles from "../styles/Modal.module.css";
 
-//don't use p tag to contain children since could pass another component such as form
-//need container style separate for dialog/alert vs container
-/* 
- <div className={ModalStyles.modalContainer}>
-        {style != "container" && (
-          <h1 className={ModalStyles.modalTitle}>TBD</h1>
-        )}
-        </div>
-*/
-const Modal = ({ isOpen, onClose, children, style = "container" }) => {
-  if (!isOpen) return null;
-  return (
-    <div className={ModalStyles.modalBackground} onClick={onClose}>
-      <div className={ModalStyles.modalContainer}>
-        <button className={ModalStyles.btnModal} onClick={onClose}>
-          X
-        </button>
+import { ModalContext } from "@/contexts/ModalContext.js";
 
-        {children}
-      </div>
-    </div>
+const Modal = ({ children }) => {
+  const { setOpenModal } = useContext(ModalContext);
+
+  //UI note: don't include a close button. close/ok/cancel will be handled by inner content
+  const closeModal = (e) => {
+    if (e.target === e.currentTarget) {
+      setOpenModal(false);
+    }
+  };
+  return createPortal(
+    <div className={ModalStyles.modalBackground} onClick={closeModal}>
+      {children}
+    </div>,
+    document.body
   );
 };
 
