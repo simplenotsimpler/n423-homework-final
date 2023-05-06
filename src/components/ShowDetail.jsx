@@ -8,9 +8,11 @@ import useFirebaseDb from "@/hooks/useFirebaseDb.js";
 import { useRouter } from "next/router.js";
 import { useState } from "react";
 import Link from "next/link.js";
+import { useShows } from "@/contexts/ShowsContext.js";
 
 const ShowDetail = ({ show }) => {
   const { currentUser } = useAuth();
+  const { getShowsFromDb } = useShows();
   const { addNotification } = useNotification();
   const { deleteShow } = useFirebaseDb();
   const router = useRouter();
@@ -31,6 +33,7 @@ const ShowDetail = ({ show }) => {
         console.log("Yes, delete showId", showId);
         // const result = await deleteShow(showId);
         await deleteShow(showId);
+        getShowsFromDb();
         addNotification(`${MESSAGES.SUCCESS_DELETE_SHOW} ${showId}`, "success");
         router.push("/");
       } catch (error) {

@@ -21,11 +21,13 @@ import { useNotification } from "@/contexts/NotificationContext.js";
 import { MESSAGES } from "@/utils/messages.js";
 import Validation from "./Validation.jsx";
 import { VALIDATION_MESSAGES } from "@/utils/messages.js";
+import { useShows } from "@/contexts/ShowsContext.js";
 
 const ShowForm = ({ showId, currentShow }) => {
   const { currentUser } = useAuth();
   const { addShow, updateShow } = useFirebase();
   const { addNotification } = useNotification();
+  const { getShowsFromDb } = useShows();
 
   //characters - array of objects not array of strings. when just use strings the item is undefined when try to map it
 
@@ -66,6 +68,7 @@ const ShowForm = ({ showId, currentShow }) => {
     try {
       await addShow(newShow);
       addNotification(MESSAGES.SUCCESS_CREATE_SHOW, "success");
+      getShowsFromDb();
     } catch (error) {
       console.error(error);
       addNotification(MESSAGES.ERROR_CREATE_SHOW, "error");
@@ -76,6 +79,7 @@ const ShowForm = ({ showId, currentShow }) => {
     try {
       await updateShow(showId, formShow);
       addNotification(MESSAGES.SUCCESS_UPDATE_SHOW, "success");
+      getShowsFromDb();
     } catch (error) {
       addNotification(MESSAGES.ERROR_UPDATE_SHOW, "error");
     }
