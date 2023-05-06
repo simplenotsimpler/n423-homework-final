@@ -6,100 +6,119 @@ import { useNotification } from "@/contexts/NotificationContext.js";
 import { MESSAGES } from "@/utils/messages.js";
 import useFirebaseDb from "@/hooks/useFirebaseDb.js";
 import { useRouter } from "next/router.js";
-import { useState } from "react";
+
 import Link from "next/link.js";
 import { useShows } from "@/contexts/ShowsContext.js";
+import { ModalContext } from "@/contexts/ModalContext.js";
+import Modal from "@/components/Modal.jsx";
+import { useContext, useState } from "react";
+import Dialog from "@/components/Dialog.jsx";
 
 const ShowDetail = ({ show }) => {
   const { currentUser } = useAuth();
   const { getShowsFromDb } = useShows();
   const { addNotification } = useNotification();
   const { deleteShow } = useFirebaseDb();
+  const { openModal, setOpenModal } = useContext(ModalContext);
   const router = useRouter();
-  const [open, setOpen] = useState(false);
+  const [showId, setShowId] = useState();
 
-  const handleDeleteClick = async (e) => {
-    const showId = getTextAfterCharacter(e.target.id, "-");
+  const handleCancel = () => setOpenModal(false);
 
-    //TODO: replace with pretty confirm w/ default on cancel
-    const confirmResult = confirm("Are you sure you want to delete this show?");
-
-    if (confirmResult) {
-      try {
-        //extra check
-        if (currentUser.email != show.fan) {
-          throw { code: "ERROR_AUTH_SHOW", message: MESSAGES.ERROR_AUTH_SHOW };
-        }
-        // if(!currentUser || currentUser.email != show.fan){
-        //   throw
-        // }
-        console.log("Yes, delete showId", showId);
-        // const result = await deleteShow(showId);
-        await deleteShow(showId);
-        getShowsFromDb();
-        addNotification(`${MESSAGES.SUCCESS_DELETE_SHOW} ${showId}`, "success");
-        router.push("/");
-      } catch (error) {
-        console.error(error);
-        if (code === "ERROR_AUTH_SHOW") {
-          addNotification(MESSAGES.ERROR_AUTH_SHOW, "error");
-        } else {
-          addNotification(MESSAGES.ERROR_DELETE_SHOW, "error");
-        }
+  const handleDelete = async () => {
+    try {
+      //extra check
+      if (currentUser.email != show.fan) {
+        throw { code: "ERROR_AUTH_SHOW", message: MESSAGES.ERROR_AUTH_SHOW };
       }
-    } else {
-      console.log("Delete cancelled");
-      addNotification(MESSAGES.INFO_CANCEL_DELETE_SHOW, "info");
+
+      console.log("Yes, delete showId", showId);
+
+      await deleteShow(showId);
+      getShowsFromDb();
+      addNotification(`${MESSAGES.SUCCESS_DELETE_SHOW} ${showId}`, "success");
+      router.push("/");
+    } catch (error) {
+      console.error(error);
+      if (code === "ERROR_AUTH_SHOW") {
+        addNotification(MESSAGES.ERROR_AUTH_SHOW, "error");
+      } else {
+        addNotification(MESSAGES.ERROR_DELETE_SHOW, "error");
+      }
     }
+    setOpenModal(false);
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   };
 
+  // https://www.youtube.com/watch?v=JesTjUcXh8o
+  // https://github.com/Sanskarraj51/CRUD/blob/main/src/pages/Home.js
+  const handleDeleteClick = (e) => {
+    setOpenModal(true);
+    setShowId(getTextAfterCharacter(e.target.id, "-"));
+  };
+
   return (
-    <div className={ShowDetailStyles.showDetail}>
-      <header className={ShowDetailStyles.showHeader}>
-        <div className={ShowDetailStyles.imgHolder}>
-          <img src={dummyImgUrlBlue} alt="" />
-        </div>
-        <div className={ShowDetailStyles.showHeaderText}>
-          <h1 className={ShowDetailStyles.title}>{show.title}</h1>
-          <p className={ShowDetailStyles.years}>
-            {show.startYear} - {show.endYear ? `${show.endYear}` : `present`}
-          </p>
-        </div>
-      </header>
-      <div className={ShowDetailStyles.showBody}>
-        <p className={ShowDetailStyles.charactersTitle}>Favorite Characters</p>
-        <ul className={ShowDetailStyles.characters}>
-          {show.characters?.length > 0 &&
-            show.characters?.map((character, idx) => {
-              return (
-                <li key={idx} className={ShowDetailStyles.character}>
-                  {character.name}
-                </li>
-              );
-            })}
-        </ul>
-      </div>
-      <footer>
-        <p>Biggest fan: {show.fan}</p>
-        {currentUser?.email === show.fan ? (
-          <div className={ShowDetailStyles.showActions}>
-            <Link href={`/shows/${show.id}/edit/`}>
-              <span className="visually-hidden">Edit</span> &#128393;
-            </Link>
-            <button
-              className={ShowDetailStyles.btnAction}
-              id={`delete-${show.id}`}
-              onClick={handleDeleteClick}
-            >
-              <span className="visually-hidden">Delete</span> &#128465;
-            </button>
+    <>
+      {openModal && (
+        <Modal>
+          <Dialog
+            onConfirm={handleDelete}
+            onCancel={handleCancel}
+            title="Delete"
+            isDelete={true}
+          >
+            Your TV show will be permanently deleted.
+          </Dialog>
+        </Modal>
+      )}
+      <div className={ShowDetailStyles.showDetail}>
+        <header className={ShowDetailStyles.showHeader}>
+          <div className={ShowDetailStyles.imgHolder}>
+            <img src={dummyImgUrlBlue} alt="" />
           </div>
-        ) : (
-          <></>
-        )}
-      </footer>
-    </div>
+          <div className={ShowDetailStyles.showHeaderText}>
+            <h1 className={ShowDetailStyles.title}>{show.title}</h1>
+            <p className={ShowDetailStyles.years}>
+              {show.startYear} - {show.endYear ? `${show.endYear}` : `present`}
+            </p>
+          </div>
+        </header>
+        <div className={ShowDetailStyles.showBody}>
+          <p className={ShowDetailStyles.charactersTitle}>
+            Favorite Characters
+          </p>
+          <ul className={ShowDetailStyles.characters}>
+            {show.characters?.length > 0 &&
+              show.characters?.map((character, idx) => {
+                return (
+                  <li key={idx} className={ShowDetailStyles.character}>
+                    {character.name}
+                  </li>
+                );
+              })}
+          </ul>
+        </div>
+        <footer>
+          <p>Biggest fan: {show.fan}</p>
+          {currentUser?.email === show.fan ? (
+            <div className={ShowDetailStyles.showActions}>
+              <Link href={`/shows/${show.id}/edit/`}>
+                <span className="visually-hidden">Edit</span> &#128393;
+              </Link>
+              <button
+                className={ShowDetailStyles.btnAction}
+                id={`delete-${show.id}`}
+                onClick={handleDeleteClick}
+              >
+                <span className="visually-hidden">Delete</span> &#128465;
+              </button>
+            </div>
+          ) : (
+            <></>
+          )}
+        </footer>
+      </div>
+    </>
   );
 };
 

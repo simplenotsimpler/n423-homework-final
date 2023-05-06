@@ -25,9 +25,9 @@
   color: white;
 }
 
-/* .dialogBody {
-  background-color: rgba(1, 191, 241, 1);
-} */
+.dialogBody {
+  
+}
 
 .actionBtns {
   display: flex;
