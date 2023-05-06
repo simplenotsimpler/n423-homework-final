@@ -21,8 +21,7 @@
     
   */
   --color-success: #00c853;
-  /* TODO: rename danger since used elsewhere */
-  --color-error: #ff1744;
+  --color-danger: #ff1744;
   --color-info: #2979ff;
   --color-warning: #ffd600;
 }

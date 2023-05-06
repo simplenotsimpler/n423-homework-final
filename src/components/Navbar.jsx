@@ -16,8 +16,7 @@ const Navbar = ({ logoText }) => {
   const [isNavExpanded, setIsNavExpanded] = useState(false);
 
   const handleNavToggle = (e) => {
-    // console.log(e.target);
-    setIsNavExpanded(!isNavExpanded);
+     setIsNavExpanded(!isNavExpanded);
   };
 
   const handleLogout = async () => {

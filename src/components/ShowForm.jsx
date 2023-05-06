@@ -31,7 +31,6 @@ const ShowForm = ({ showId, currentShow }) => {
 
   //characters - array of objects not array of strings. when just use strings the item is undefined when try to map it
 
-
   //TODO: fix - getting key error again on 39:11, maybe need to use uuid?
   const emptyCharacter = { name: "" };
   const initialCharacters = [];
@@ -47,7 +46,6 @@ const ShowForm = ({ showId, currentShow }) => {
 
   const router = useRouter();
 
- 
   useEffect(() => {
     if (showId || currentShow) {
       setFormShow(currentShow);
@@ -121,10 +119,9 @@ const ShowForm = ({ showId, currentShow }) => {
   /* FUTURE ENHANCMENT: remove error after user leaves input. not implemented since we're not using onBlur & validating after submit */
   // https://stackoverflow.com/questions/41296668/how-do-i-add-validation-to-the-form-in-my-react-component
   const handleValidation = (values) => {
-    console.log("handleValidation > values", values);
     let errors = {};
     let formIsValid = true;
-    // let characters = [];
+
     //TV invented in 1927 so YYYY after 1927
     const regex = /^(192[7-9]|19[5-9][0-9]|20\d\d)$/i;
 

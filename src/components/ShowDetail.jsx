@@ -31,9 +31,6 @@ const ShowDetail = ({ show }) => {
       if (currentUser.email != show.fan) {
         throw { code: "ERROR_AUTH_SHOW", message: MESSAGES.ERROR_AUTH_SHOW };
       }
-
-      console.log("Yes, delete showId", showId);
-
       await deleteShow(showId);
       getShowsFromDb();
       addNotification(`${MESSAGES.SUCCESS_DELETE_SHOW} ${showId}`, "success");
