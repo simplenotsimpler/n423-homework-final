@@ -18,6 +18,7 @@ export const MESSAGES = {
   ERROR_UPDATE_SHOW: "Error updating show.",
   SUCCESS_DELETE_SHOW: "Show deleted.",
   ERROR_DELETE_SHOW: "Error deleting show.",
+  ERROR_AUTH_SHOW: "You can only edit or delete your own shows",
   INFO_CANCEL_DELETE_SHOW: "Delete show cancelled",
   SUCCESS_FETCH_SHOWS: "Fetched all shows",
   ERROR_FETCH_SHOWS: "Error fetching shows",

@@ -15,7 +15,7 @@ export const auth = app.auth();
 export const db = app.firestore();
 
 //make sure Google has been added as auth provider in Firebase Authentication
-//TODO: set up firebase rules so that only Google users can write
+
 export const googleProvider = new firebase.auth.GoogleAuthProvider();
 
 export default app;

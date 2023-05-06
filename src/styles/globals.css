@@ -53,11 +53,9 @@ p {
   margin-bottom: 0;
 }
 
-/* body {
-  min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-} */
+body {
+  font-family: var(--roboto-font);
+}
 /* reset for forms */
 /* https://developer.mozilla.org/en-US/docs/Learn/Forms/Styling_web_forms */
 form,

@@ -50,10 +50,8 @@
   font-style: italic;
 }
 
-/* TODO: box shadow */
 .btnLink {
   text-decoration: none;
-  /* color: var(--theme-primary); */
   color: var(--theme-dark);
   background-color: var(--theme-accent);
   margin: 1rem;

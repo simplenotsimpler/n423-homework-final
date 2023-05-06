@@ -24,9 +24,12 @@ const ShowDetail = ({ show }) => {
     //TODO: replace with pretty confirm w/ default on cancel
     const confirmResult = confirm("Are you sure you want to delete this show?");
 
-    //TODO: try catch, check that owner as extra precaution
     if (confirmResult) {
       try {
+        //extra check
+        if (currentUser.email != show.fan) {
+          throw { code: "ERROR_AUTH_SHOW", message: MESSAGES.ERROR_AUTH_SHOW };
+        }
         // if(!currentUser || currentUser.email != show.fan){
         //   throw
         // }
@@ -38,7 +41,11 @@ const ShowDetail = ({ show }) => {
         router.push("/");
       } catch (error) {
         console.error(error);
-        addNotification(MESSAGES.ERROR_DELETE_SHOW, "error");
+        if (code === "ERROR_AUTH_SHOW") {
+          addNotification(MESSAGES.ERROR_AUTH_SHOW, "error");
+        } else {
+          addNotification(MESSAGES.ERROR_DELETE_SHOW, "error");
+        }
       }
     } else {
       console.log("Delete cancelled");

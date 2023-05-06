@@ -12,7 +12,6 @@ import { AuthProvider } from "@/contexts/AuthContext.js";
 import { NotificationProvider } from "@/contexts/NotificationContext.js";
 import { ShowsProvider } from "@/contexts/ShowsContext.js";
 
-//TODO: watch for loading issues, esp. when deployed, and fix
 const roboto = Roboto({
   display: "swap",
   subsets: ["latin"],

@@ -31,8 +31,7 @@ const ShowForm = ({ showId, currentShow }) => {
 
   //characters - array of objects not array of strings. when just use strings the item is undefined when try to map it
 
-  //TODO: do I want start with empty characters?
-  //TODO: check if character is empty when saving & don't save empty character
+
   //TODO: fix - getting key error again on 39:11, maybe need to use uuid?
   const emptyCharacter = { name: "" };
   const initialCharacters = [];
