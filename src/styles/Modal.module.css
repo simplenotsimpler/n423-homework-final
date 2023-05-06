@@ -1,14 +1,16 @@
 .modalBackground {
-  position: absolute;
   width: 100vw;
-  /* TODO: fix - less the footer */
   height: 100vh;
+  z-index: 1000;
+
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
   background-color: rgba(9, 0, 0, 0.7);
-  /* backdrop-filter: blur(9px); */
-  z-index: 99;
+
   display: flex;
   justify-content: center;
   align-items: center;
-  top: 0;
-  left: 0;
 }

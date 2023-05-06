@@ -19,14 +19,22 @@
   border-top-right-radius: 10px;
 }
 .dialogTitle {
-  font-size: 1.5rem;
+  font-size: 2rem;
   color: var(--theme-accent);
   padding: 0.5rem;
   color: white;
 }
 
 .dialogBody {
-  
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dialogBody p {
+  font-size: 1.15rem;
 }
 
 .actionBtns {
@@ -52,6 +60,14 @@
   font-weight: 600;
 }
 
+/* come back to styling */
+.btnCancel:focus,
+.btnOkay:focus,
+.btnDelete:focus {
+  outline: none;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
 /* https://uxmovement.com/buttons/why-cancel-buttons-should-never-have-a-color/ */
 .btnCancel {
   border: solid 2px rgba(9, 0, 0, 0.5);

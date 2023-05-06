@@ -64,10 +64,11 @@ const ShowDetail = ({ show }) => {
           <Dialog
             onConfirm={handleDelete}
             onCancel={handleCancel}
-            title="Delete"
+            title="Delete the show?"
             isDelete={true}
           >
-            Your TV show will be permanently deleted.
+            <p>Delete the show?</p>
+            <p>It will be permanently deleted.</p>
           </Dialog>
         </Modal>
       )}
