@@ -48,6 +48,7 @@ const ShowForm = ({ showId, currentShow }) => {
 
   const router = useRouter();
 
+ 
   useEffect(() => {
     if (showId || currentShow) {
       setFormShow(currentShow);
