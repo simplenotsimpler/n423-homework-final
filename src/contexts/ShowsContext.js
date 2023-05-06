@@ -12,7 +12,7 @@ export const ShowsProvider = ({ children }) => {
   const { addNotification } = useNotification();
 
   //try catch here since we call it multiple times b/c of refresh
-  //TODO: what if shows collection not created yet
+  //note does not error if shows collection not created yet (it's a NoSQL thing)
   const getShowsFromDb = async () => {
     try {
       setIsLoading(true);

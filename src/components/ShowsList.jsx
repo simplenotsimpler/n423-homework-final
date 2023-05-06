@@ -3,8 +3,6 @@ import ShowsListStyles from "../styles/ShowsList.module.css";
 import { useShows } from "@/contexts/ShowsContext.js";
 import { useAuth } from "@/contexts/AuthContext.js";
 
-//TODO: check if shows.length === 0
-
 const ShowsList = () => {
   const { shows, isLoading } = useShows();
   const { currentUser } = useAuth();
@@ -17,11 +15,19 @@ const ShowsList = () => {
   });
   return (
     <>
-      {isLoading ? (
-        <p>Loading...</p>
-      ) : (
-        <ul className={ShowsListStyles.showsList}>{showsListComponents}</ul>
+      {isLoading && <p>Loading...</p>}
+      {!isLoading && shows.length === 0 && (
+        <div className={ShowsListStyles.noShows}>
+          <p className={ShowsListStyles.noShowsText}>Sorry, no shows yet.</p>
+          {!currentUser && (
+            <p className={ShowsListStyles.noShowsSignIn}>
+              Sign in to add your fave TV show.
+            </p>
+          )}
+        </div>
       )}
+
+      <ul className={ShowsListStyles.showsList}>{showsListComponents}</ul>
     </>
   );
 };
