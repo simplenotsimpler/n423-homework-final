@@ -6,7 +6,7 @@ const Show = ({ show }) => {
   return (
     <div className={ShowStyles.card}>
       <div className={ShowStyles.imageHolder}>
-        <img src={dummyImgUrl} alt="" />
+        <img src={show.imgUrl != "" ? show.imgUrl : dummyImgUrl} alt="" />
       </div>
       <div className={ShowStyles.content}>
         <p className={ShowStyles.title}>{show.title}</p>

@@ -12,7 +12,7 @@
 
 //plus & minus sign forced to text per https://stackoverflow.com/questions/32915485/how-to-prevent-unicode-characters-from-rendering-as-emoji-in-html-from-javascrip
 import ShowFormStyles from "../styles/ShowForm.module.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import useFirebase from "@/hooks/useFirebaseDb.js";
 import { useRouter } from "next/router.js";
 import { useAuth } from "@/contexts/AuthContext.js";
@@ -29,9 +29,9 @@ const ShowForm = ({ showId, currentShow }) => {
   const { addNotification } = useNotification();
   const { getShowsFromDb } = useShows();
   const { uploadImage } = useFirebaseStorage();
-  const [imgUrl, setImageUrl] = useState();
 
   const [selectedFile, setSelectedFile] = useState(null);
+  const fileInputRef = useRef(null);
   const handleFileChange = (e) => {
     setSelectedFile(e.target.files[0]);
   };
@@ -202,6 +202,8 @@ const ShowForm = ({ showId, currentShow }) => {
         //reset form by resetting the show state
         //https://stackoverflow.com/questions/63475521/how-to-clear-input-field-after-a-successful-submittion-in-react-using-useeffect
         setFormShow(initialShowState);
+        //reset file input
+        fileInputRef.current.value = null;
       }
     } else {
       addNotification(MESSAGES.ERROR_VALIDATION_FAILED, "error");
@@ -270,6 +272,7 @@ const ShowForm = ({ showId, currentShow }) => {
               accept="image/jpeg, image/png, image/jpg"
               className={ShowFormStyles.showInput}
               onChange={handleFileChange}
+              ref={fileInputRef}
             />
             <button
               className={ShowFormStyles.btnUpload}

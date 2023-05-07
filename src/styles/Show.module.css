@@ -13,6 +13,7 @@
 .card .imageHolder {
   width: 100%;
   height: 150px;
+  min-height: 150px;
 }
 .card .imageHolder img {
   border-top-left-radius: 10px;

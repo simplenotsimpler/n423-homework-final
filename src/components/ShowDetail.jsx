@@ -72,7 +72,7 @@ const ShowDetail = ({ show }) => {
       <div className={ShowDetailStyles.showDetail}>
         <header className={ShowDetailStyles.showHeader}>
           <div className={ShowDetailStyles.imgHolder}>
-            <img src={dummyImgUrlBlue} alt="" />
+            <img src={show.imgUrl != "" ? show.imgUrl : dummyImgUrlBlue} alt="" />
           </div>
           <div className={ShowDetailStyles.showHeaderText}>
             <h1 className={ShowDetailStyles.title}>{show.title}</h1>
