@@ -15,7 +15,7 @@ const ShowDetailPage = () => {
 
   //check that router read
   //https://stackoverflow.com/questions/61040790/userouter-withrouter-receive-undefined-on-query-in-first-render
-  //TODO: move try catch & loading to context
+  //TODO: fix blank when refresh page
   useEffect(() => {
     setIsLoading(true);
     if (!router.isReady || !showId) return;

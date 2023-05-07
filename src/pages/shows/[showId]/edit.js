@@ -24,7 +24,7 @@ const EditShowPage = () => {
 
   //grab the show here. this ensures gets show fresh in case user comes directly to link rather than from index.
   //also allows to manage the loading state better
-  //TODO: move try catch & loading to context
+   //TODO: fix blank when refresh page, not recognizing logged in
   useEffect(() => {
     setIsLoading(true);
     if (!router.isReady || !showId) return;

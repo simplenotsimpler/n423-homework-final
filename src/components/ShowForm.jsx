@@ -10,7 +10,6 @@
   regex year pattern from https://stackoverflow.com/questions/49912774/javascript-regex-handleValidation-input-year-between-1945-current-year
 */
 
-//TODO: test that +/- icons work on diff. browsers & devices
 //plus & minus sign forced to text per https://stackoverflow.com/questions/32915485/how-to-prevent-unicode-characters-from-rendering-as-emoji-in-html-from-javascrip
 import ShowFormStyles from "../styles/ShowForm.module.css";
 import { useState, useEffect } from "react";

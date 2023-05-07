@@ -9,6 +9,7 @@ export function useNotification() {
   return { notification, addNotification, removeNotification };
 }
 
+//TODO: set a timeout/interval so disappears on own
 export const NotificationProvider = ({ children }) => {
   const [notification, setNotification] = useState(null);
 
