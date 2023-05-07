@@ -21,12 +21,15 @@ import { MESSAGES } from "@/utils/messages.js";
 import Validation from "./Validation.jsx";
 import { VALIDATION_MESSAGES } from "@/utils/messages.js";
 import { useShows } from "@/contexts/ShowsContext.js";
+import useFirebaseStorage from "@/hooks/useFirebaseStorage.js";
 
 const ShowForm = ({ showId, currentShow }) => {
   const { currentUser } = useAuth();
   const { addShow, updateShow } = useFirebase();
   const { addNotification } = useNotification();
   const { getShowsFromDb } = useShows();
+  const { uploadImage } = useFirebaseStorage();
+  const [imgUrl, setImageUrl] = useState();
 
   const [selectedFile, setSelectedFile] = useState(null);
   const handleFileChange = (e) => {
@@ -36,7 +39,9 @@ const ShowForm = ({ showId, currentShow }) => {
   const handleUploadClick = async (e) => {
     e.preventDefault();
     if (selectedFile) {
-      console.log(e);
+      const downloadUrl = await uploadImage(selectedFile);
+      // setImageUrl(downloadUrl);
+      setFormShow({ ...formShow, imgUrl: downloadUrl });
     }
   };
 
@@ -46,6 +51,7 @@ const ShowForm = ({ showId, currentShow }) => {
   const emptyCharacter = { name: "" };
   const initialCharacters = [];
   const initialShowState = {
+    imgUrl: "",
     title: "",
     startYear: "",
     endYear: "",
