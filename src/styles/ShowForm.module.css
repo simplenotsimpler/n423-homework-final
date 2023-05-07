@@ -65,14 +65,14 @@
   width: 95%;
   cursor: pointer;
 }
-.showInputGroup .uploadIcon {
+.showInputGroup .btnUpload {
   margin-left: auto;
   border: none;
   border-radius: 10px;
   height: 2rem;
   width: 2rem;
   font-size: 2.5rem;
-  /* background-color: var(--theme-primary); */
+  background-color: transparent;
   color: var(--theme-accent);
   cursor: pointer;
   padding: 2px;

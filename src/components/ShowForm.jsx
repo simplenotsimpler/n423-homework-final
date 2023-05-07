@@ -28,6 +28,18 @@ const ShowForm = ({ showId, currentShow }) => {
   const { addNotification } = useNotification();
   const { getShowsFromDb } = useShows();
 
+  const [selectedFile, setSelectedFile] = useState(null);
+  const handleFileChange = (e) => {
+    setSelectedFile(e.target.files[0]);
+  };
+
+  const handleUploadClick = async (e) => {
+    e.preventDefault();
+    if (selectedFile) {
+      console.log(e);
+    }
+  };
+
   //characters - array of objects not array of strings. when just use strings the item is undefined when try to map it
 
   //TODO: fix - getting key error again on 39:11, maybe need to use uuid?
@@ -249,11 +261,17 @@ const ShowForm = ({ showId, currentShow }) => {
               name="showImage"
               id="showImage"
               aria-label="showImage"
-              class="form-element"
               accept="image/jpeg, image/png, image/jpg"
               className={ShowFormStyles.showInput}
+              onChange={handleFileChange}
             />
-            <div className={ShowFormStyles.uploadIcon}>{uploadIcon}</div>
+            <button
+              className={ShowFormStyles.btnUpload}
+              onClick={handleUploadClick}
+            >
+              <span className="visually-hidden">Upload</span>
+              {uploadIcon}
+            </button>
           </div>
         </div>
         <div className={ShowFormStyles.showInputGroup}>
