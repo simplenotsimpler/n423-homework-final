@@ -16,7 +16,7 @@ const Navbar = ({ logoText }) => {
   const [isNavExpanded, setIsNavExpanded] = useState(false);
 
   const handleNavToggle = (e) => {
-     setIsNavExpanded(!isNavExpanded);
+    setIsNavExpanded(!isNavExpanded);
   };
 
   const handleLogout = async () => {
@@ -65,11 +65,13 @@ const Navbar = ({ logoText }) => {
         className={`${NavbarStyles.navmenu} ${
           isNavExpanded ? NavbarStyles.expanded : ""
         }`}
+        onClick={handleNavToggle}
       >
         <li>
           <Link
             href="/"
             className={router.pathname === "/" ? NavbarStyles.activeLink : ""}
+            onClick={handleNavToggle}
           >
             Home
           </Link>
@@ -83,6 +85,7 @@ const Navbar = ({ logoText }) => {
                 className={
                   router.pathname === "/add" ? NavbarStyles.activeLink : ""
                 }
+                onClick={handleNavToggle}
               >
                 Add Fave Show
               </Link>
