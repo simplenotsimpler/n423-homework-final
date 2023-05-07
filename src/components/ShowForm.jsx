@@ -152,12 +152,15 @@ const ShowForm = ({ showId, currentShow }) => {
       delete errors.startYear;
     }
 
-    if (!regex.test(values.endYear)) {
-      errors.endYear = VALIDATION_MESSAGES.patternMismatch.endYear;
-    } else if (values.endYear < values.startYear) {
-      errors.endYear = VALIDATION_MESSAGES.rangeUnderflow.endYear;
-    } else {
-      delete errors.endYear;
+    //only test if not blank
+    if (values.endYear) {
+      if (!regex.test(values.endYear)) {
+        errors.endYear = VALIDATION_MESSAGES.patternMismatch.endYear;
+      } else if (values.endYear < values.startYear) {
+        errors.endYear = VALIDATION_MESSAGES.rangeUnderflow.endYear;
+      } else {
+        delete errors.endYear;
+      }
     }
 
     if (Object.keys(errors).length > 0) {
@@ -220,7 +223,6 @@ const ShowForm = ({ showId, currentShow }) => {
     );
   });
 
-  //TODO: fix years errors - when one has error & other doesn't, gets lopsided
   return (
     <>
       <form className={ShowFormStyles.showForm} onSubmit={handleSubmit}>

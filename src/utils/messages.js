@@ -18,7 +18,7 @@ export const MESSAGES = {
   ERROR_UPDATE_SHOW: "Error updating show.",
   SUCCESS_DELETE_SHOW: "Show deleted.",
   ERROR_DELETE_SHOW: "Error deleting show.",
-  ERROR_AUTH_SHOW: "You can only edit or delete your own shows",
+  ERROR_AUTH_SHOW: "You can only edit or delete your own shows.",
   INFO_CANCEL_DELETE_SHOW: "Delete show cancelled",
   SUCCESS_FETCH_SHOWS: "Fetched all shows",
   ERROR_FETCH_SHOWS: "Error fetching shows",
@@ -34,8 +34,8 @@ export const VALIDATION_MESSAGES = {
     character: "Please enter a character or remove it.",
   },
   patternMismatch: {
-    startYear: "Please enter a year after 1927 in the yyyy format.",
-    endYear: "Please enter a year after 1927 in the yyyy format.",
+    startYear: "Must be after 1927 in yyyy format.",
+    endYear: "Must be after 1927 in yyyy format.",
   },
   rangeUnderflow: {
     endYear: "End Year must be equal to or after Start Year.",
