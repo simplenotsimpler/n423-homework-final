@@ -32,6 +32,13 @@ const ShowForm = ({ showId, currentShow }) => {
 
   const [selectedFile, setSelectedFile] = useState(null);
   const fileInputRef = useRef(null);
+
+  // https://bobbyhadz.com/blog/react-open-file-input-on-button-click
+  const handleBtnUpload = (e) => {
+    e.preventDefault();
+    fileInputRef.current.click();
+  };
+
   const handleFileChange = (e) => {
     setSelectedFile(e.target.files[0]);
   };
@@ -278,7 +285,7 @@ const ShowForm = ({ showId, currentShow }) => {
             />
             <button
               className={ShowFormStyles.btnUpload}
-              onClick={handleImgUpload}
+              onClick={handleBtnUpload}
             >
               <span className="visually-hidden">Upload</span>
               {uploadIcon}
