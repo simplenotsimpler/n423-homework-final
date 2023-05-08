@@ -20,7 +20,6 @@ https://n423-homework-final.vercel.app/
 
 - Refresh of shows/[showId] page is blank
 - Refresh of shows/[showId]/edit is blank/does not recognize logged in
-- Key error in ShowForm when add a character.
 - File input for image upload loses mouse cursor. It works, but you can't see it.
 
 ## What I learned
@@ -32,7 +31,6 @@ https://n423-homework-final.vercel.app/
 ## TODOS
 
 - Catch firebase init issues
-- Fix key error in showForm
 - Fix shows/[showId] & shows/[showId]/edit refresh issues
 - Add timeout/interval to notifications
 - Fix image upload cursor issue. Best option would be a third-party library that would also provide drag & drop & image preview.

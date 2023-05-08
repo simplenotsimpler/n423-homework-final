@@ -22,6 +22,7 @@ import Validation from "./Validation.jsx";
 import { VALIDATION_MESSAGES } from "@/utils/messages.js";
 import { useShows } from "@/contexts/ShowsContext.js";
 import useFirebaseStorage from "@/hooks/useFirebaseStorage.js";
+import { v4 as uuidv4 } from "uuid";
 
 const ShowForm = ({ showId, currentShow }) => {
   const { currentUser } = useAuth();
@@ -54,8 +55,7 @@ const ShowForm = ({ showId, currentShow }) => {
 
   //characters - array of objects not array of strings. when just use strings the item is undefined when try to map it
 
-  //TODO: fix - getting key error again on 39:11, maybe need to use uuid?
-  const emptyCharacter = { name: "" };
+  const emptyCharacter = { name: "", id: "" };
   const initialCharacters = [];
   const initialShowState = {
     imgUrl: "",
@@ -137,7 +137,7 @@ const ShowForm = ({ showId, currentShow }) => {
 
   const handleInputChangeCharacters = (e, index) => {
     const values = [...formShow.characters];
-    values[index] = { name: e.target.value };
+    values[index] = { name: e.target.value, id: uuidv4() };
     setFormShow({ ...formShow, characters: [...values] });
   };
 
@@ -237,7 +237,10 @@ const ShowForm = ({ showId, currentShow }) => {
   );
   const characterInputs = formShow.characters?.map((_character, index) => {
     return (
-      <div className={ShowFormStyles.showInputGroup}>
+      <div
+        className={ShowFormStyles.showInputGroup}
+        key={formShow.characters[index].id}
+      >
         <div className={ShowFormStyles.showInputCharacters} key={index}>
           <input
             type="text"
