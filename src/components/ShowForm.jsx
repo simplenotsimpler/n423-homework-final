@@ -36,7 +36,7 @@ const ShowForm = ({ showId, currentShow }) => {
     setSelectedFile(e.target.files[0]);
   };
 
-  const handleUploadClick = async (e) => {
+  const handleImgUpload = async (e) => {
     e.preventDefault();
     if (selectedFile) {
       const downloadUrl = await uploadImage(selectedFile);
@@ -92,6 +92,7 @@ const ShowForm = ({ showId, currentShow }) => {
 
   const editShow = async () => {
     try {
+      // console.log("editShow >> formShow", formShow);
       await updateShow(showId, formShow);
       addNotification(MESSAGES.SUCCESS_UPDATE_SHOW, "success");
       getShowsFromDb();
@@ -272,11 +273,12 @@ const ShowForm = ({ showId, currentShow }) => {
               accept="image/jpeg, image/png, image/jpg"
               className={ShowFormStyles.showInput}
               onChange={handleFileChange}
+              onBlur={handleImgUpload}
               ref={fileInputRef}
             />
             <button
               className={ShowFormStyles.btnUpload}
-              onClick={handleUploadClick}
+              onClick={handleImgUpload}
             >
               <span className="visually-hidden">Upload</span>
               {uploadIcon}
